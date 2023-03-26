@@ -49,6 +49,7 @@ else{
     $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio'],$_POST['checked']));
     $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
     $id=$db->lastInsertId();
+    $pwr->bindParam('person_id', $id);
     foreach($_POST['form1'] as $power){
         $pwr->bindParam('power_id', $power);
         if($pwr->execute()==false){
