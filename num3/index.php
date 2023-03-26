@@ -50,7 +50,7 @@ else{
 
     try {
     $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
-    $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio']),$_POST['checked']));
+    $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio'],$_POST['checked']));
     $id=$db->lastInsertId();
     $pwr=$db->prepare("INSERT INTO supers SET p_name=?,uid=?");
     foreach($_POST['power'] as $power){ 
