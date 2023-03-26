@@ -47,11 +47,11 @@ else{
     try { 
     $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
     $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio'],$_POST['checked']));
-    $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
+    $pwr=$db->prepare("INSERT INTO form1 SET power_id=:power,person_id=:person");
     $id=$db->lastInsertId();
-    $pwr->bindParam('person_id', $id);
+    $pwr->bindParam(':person', $id);
     foreach($_POST['form1'] as $power){
-        $pwr->bindParam('power_id', $power);
+        $pwr->bindParam(':power', $power);
         if($pwr->execute()==false){
           print_r($pwr->errorCode());
           print_r($pwr->errorInfo());
