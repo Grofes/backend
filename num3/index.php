@@ -43,14 +43,19 @@ else{
     $user = 'u52821';
     $pass = '8567731';
     $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-
-    $id=$db->lastInsertId();
-    try {
+  
+    try { 
     $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
     $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio'],$_POST['checked']));
     $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
-    foreach($_POST['form1'] as $power){ 
-        $pwr->execute(array($power,$id));  
+    $id=$db->lastInsertId();
+    foreach($_POST['form1'] as $power){
+        $pwr->bindParam('power_id', $power);
+        if($pwr->execute()==false){
+          print_r($pwr->errorCode());
+          print_r($pwr->errorInfo());
+          exit();
+        }
     }
     }
     catch(PDOException $e){
