@@ -23,7 +23,7 @@ else{
     print('Выберите год рождения.<br/>');
     $errors = TRUE;
     }
-    if ($_POST['sex']!='M' and $_POST['sex']!='W'){
+    if (empty($_POST['sex'])){
     print('Выберите пол.<br/>');
     $errors = TRUE;
     }
@@ -40,13 +40,13 @@ else{
     exit();
     }
 
-    $user = 'u47593';
-    $pass = '7863466';
-    $db = new PDO('mysql:host=localhost;dbname=u47593', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+    $user = 'u52821';
+    $pass = '8567731';
+    $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
     try {
     $stmt = $db->prepare("INSERT INTO application SET name=?,email=?,year=?,sex=?,limb=?,bio=?");
-    $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['limb'],$_POST['bio']));
+    $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio']));
     $id=$db->lastInsertId();
     $pwr=$db->prepare("INSERT INTO supers SET p_name=?,uid=?");
     foreach($_POST['power'] as $power){ 
