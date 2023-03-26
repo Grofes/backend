@@ -34,7 +34,7 @@
       <input name="limb" type="radio" value="4" /> 4 
     </div>
     <label> Выберите суперспособности </label> <br>
-    <select name="power[]" size="3" multiple>
+    <select name="form1[]" size="3" multiple>
       <option value="1">Телпортация</option>
       <option value="2">Бессмертие</option>
       <option value="3">Телепатия</option>
