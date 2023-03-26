@@ -27,7 +27,7 @@ else{
     print('Выберите пол.<br/>');
     $errors = TRUE;
     }
-    if ($_POST['limb']<1 or $_POST['limb']>4){
+    if (empty($_POST['limb']){
     print('Выберите сколько у вас конечностей.<br/>');
     $errors = TRUE;
     }
