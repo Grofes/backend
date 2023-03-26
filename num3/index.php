@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (!empty($_GET['save'])) {
-    print('Данные были сохранены');
+    print('Данные были сохранены</br></br>');
   }
   include('form.php');
 }
