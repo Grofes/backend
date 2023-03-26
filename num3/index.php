@@ -44,9 +44,9 @@ else{
     exit();
     }
 
-    $user = 'u52822';
+    $user = 'u52821';
     $pass = '8567731';
-    $db = new PDO('mysql:host=localhost;dbname=u52822', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+    $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
   
     try { 
     $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
