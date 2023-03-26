@@ -31,9 +31,13 @@ else{
     print('Выберите сколько у вас конечностей.<br/>');
     $errors = TRUE;
     }
-    if(!isset($_POST['form1'])){
-        print('Выберите хотя бы одну суперспособность.<br/>');
-        $errors=TRUE;
+    if (!isset($_POST['form1'])){
+    print('Выберите хотя бы одну суперспособность.<br/>');
+    $errors=TRUE;
+    }
+    if ($_POST['check']!=TRUE){
+    print('Нажмите согласиться.<br/>');
+    $errors=TRUE;
     }
     if ($errors) {
     print_r('Исправьте ошибки');
