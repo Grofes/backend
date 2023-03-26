@@ -35,6 +35,10 @@ else{
         print('Выберите хотя бы одну суперспособность.<br/>');
         $errors=TRUE;
     }
+    if($_POST['checked']!="on"){
+    print('Согласитесь.<br/>');
+    $errors = TRUE;
+    }
     if ($errors) {
     print_r('Исправьте ошибки');
     exit();
@@ -45,8 +49,8 @@ else{
     $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
     try {
-    $stmt = $db->prepare("INSERT INTO application SET name=?,email=?,year=?,sex=?,limb=?,bio=?");
-    $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio']));
+    $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
+    $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio']),$_POST['checked']));
     $id=$db->lastInsertId();
     $pwr=$db->prepare("INSERT INTO supers SET p_name=?,uid=?");
     foreach($_POST['power'] as $power){ 
