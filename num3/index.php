@@ -31,7 +31,7 @@ else{
     print('Выберите сколько у вас конечностей.<br/>');
     $errors = TRUE;
     }
-    if(!isset($_POST['power'])){
+    if(!isset($_POST['form1'])){
         print('Выберите хотя бы одну суперспособность.<br/>');
         $errors=TRUE;
     }
