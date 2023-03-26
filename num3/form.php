@@ -12,7 +12,7 @@
     <select name="year">
       <option value="Выбрать">Выбрать</option>
     <?php
-        for($i=1800;$i<=2099;$i++){
+        for($i=1901;$i<=2901;$i++){
           printf("<option value=%d>%d год</option>",$i,$i);
         }
     ?>
