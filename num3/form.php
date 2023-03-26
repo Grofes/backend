@@ -23,8 +23,8 @@
     </select> <br>
     <label> Ваш пол </label> <br>
     <div>
-      <input name="sex" type="radio" value="M" /> Мужчина
-      <input name="sex" type="radio" value="W" /> Женщина
+      <input name="sex" type="radio" value="1" /> Мужчина
+      <input name="sex" type="radio" value="2" /> Женщина
     </div>
     <label> Сколько у вас конечностей </label> <br>
     <div>
