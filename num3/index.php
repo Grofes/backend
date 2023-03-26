@@ -27,7 +27,7 @@ else{
     print('Выберите пол.<br/>');
     $errors = TRUE;
     }
-    if (empty($_POST['limb']){
+    if (empty($_POST['limb'])){
     print('Выберите сколько у вас конечностей.<br/>');
     $errors = TRUE;
     }
