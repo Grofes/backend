@@ -12,8 +12,5 @@ body {
         max-width: 960px;
         text-align: center;
         margin: 0 auto;
-}
-
-#header {
-    padding-top:500px;
+    padding-top:400px;
 }
