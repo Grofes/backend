@@ -35,7 +35,7 @@ else{
         print('Выберите хотя бы одну суперспособность.<br/>');
         $errors=TRUE;
     }
-    if($_POST['checked']!="on"){
+    if($_POST['checked']!='on'){
     print('Согласитесь.<br/>');
     $errors = TRUE;
     }
