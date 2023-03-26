@@ -44,10 +44,10 @@ else{
     $pass = '8567731';
     $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
+    $id=$db->lastInsertId();
     try {
     $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
     $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio'],$_POST['checked']));
-    $id=$db->lastInsertId();
     $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
     foreach($_POST['form1'] as $power){ 
         $pwr->execute(array($power,$id));  
