@@ -1,12 +1,6 @@
-<style>
-    .form1{
-        max-width: 960px;
-        text-align: center;
-        margin: 0 auto;
-    }
-</style>
+<link rel="stylesheet" href="style.css" type="text/css">
 <body>
-  <div class="form1">
+  <div class="fr1">
   <form action="index.php" method="POST">
     <label> ФИО </label> <br>
     <input name="name" /> <br>
