@@ -1,1 +1,9 @@
+/*Глобальные параметры*/
 
+* {margin: 0; padding: 0;}
+
+body {
+    font-family: roboto, sans-serif;
+    background-color: skyblue;
+    text-align: center;
+}
