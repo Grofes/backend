@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="style.css" type="text/css">
+<head>
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
 <body>
   <div class="fr1">
   <form action="index.php" method="POST">
