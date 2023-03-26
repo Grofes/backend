@@ -35,9 +35,9 @@
     </div>
     <label> Выберите суперспособности </label> <br>
     <select name="power[]" size="3" multiple>
-      <option value="Телепортация">Телпортация</option>
-      <option value="Бессмертие">Бессмертие</option>
-      <option value="Телепатия">Телепатия</option>
+      <option value="1">Телпортация</option>
+      <option value="2">Бессмертие</option>
+      <option value="3">Телепатия</option>
     </select> <br>
     <label> Биография </label> <br>
     <textarea name="bio" rows="10" cols="15"></textarea> <br>
