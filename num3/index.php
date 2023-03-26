@@ -49,7 +49,7 @@ else{
     $stmt -> execute(array($_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio'],$_POST['checked']));
     $id=$db->lastInsertId();
     $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
-    foreach($_POST['power'] as $power){ 
+    foreach($_POST['power_id'] as $power){ 
         $pwr->execute(array($power,$id));  
     }
     }
