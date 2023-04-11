@@ -166,9 +166,9 @@ $sex=$_POST['sex'];
 $limb=$_POST['limb'];
 $bio=$_POST['bio'];
 $powers=$_POST['power'];
-$user = 'u41026';
-$pass = '4433573';
-$db = new PDO('mysql:host=localhost;dbname=u41026', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+$user = 'u52821';
+$pass = '8567731';
+$db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
 try {
   $stmt = $db->prepare("INSERT INTO application SET name=?,email=?,year=?,sex=?,limb=?,bio=?");
