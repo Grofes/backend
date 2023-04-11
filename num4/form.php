@@ -29,7 +29,7 @@ if (!empty($messages)) {
     <select name="year" <?php if ($errors['year']) {print 'class="error"';} ?>>
       <option value="Выбрать">Выбрать</option>
     <?php
-        for($i=1800;$i<=2022;$i++){
+        for($i=1800;$i<=2023;$i++){
           if($values['year']==$i){
             printf("<option value=%d selected>%d год</option>",$i,$i);
           }
