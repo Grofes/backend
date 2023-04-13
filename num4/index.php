@@ -76,7 +76,7 @@ else {
   setcookie('email_error','',100000);
 }
 //проверка года
-if ($_POST['year']=='Выбрать' or ($_POST['year']<1800 and $_POST['year']>2022)) {
+if ($_POST['year']=='Выбрать' or ($_POST['year']<1800 and $_POST['year']>2023)) {
   setcookie('year_error', '1', time() + 24 * 60 * 60);
   setcookie('year_value', '', 100000);
   $errors = TRUE;
@@ -112,6 +112,7 @@ if (!isset($_POST['power'])) {
   setcookie('teleport_value', '', 100000);
   setcookie('telepat_value', '', 100000);
   $errors = TRUE;
+  print("Привет мир!");
 }
 else {
   $pwrs=$_POST['power'];
