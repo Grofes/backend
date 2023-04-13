@@ -134,7 +134,7 @@ else {
   }
 }
 //запись куки для биографии
-setcookie('bio_value',$_POST['bio'],time()+ 12*30*24*60*60);
+setcookie('bio_value',$_POST['bio'],time()+ 0);
 //проверка согласия с политикой конфиденциальности
 if(!isset($_POST['check'])){
   setcookie('check_error','1',time()+ 24*60*60);
@@ -142,7 +142,7 @@ if(!isset($_POST['check'])){
   $errors=TRUE;
 }
 else{
-  setcookie('check_value',TRUE,time()+ 0);
+  setcookie('check_value',TRUE,time()+ 12*30*24*60*60);
   setcookie('check_error','',100000);
 }
 
