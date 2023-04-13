@@ -66,7 +66,7 @@ else {
   setcookie('name_error','',100000);
 }
 //проверка почты
-if (empty($_POST['email']) or !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)  or !preg_match($regex_name,$_POST['email'])) {
+if (empty($_POST['email']) or !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)  or !preg_match($regex_email,$_POST['email'])) {
   setcookie('email_error', '1', time() + 24 * 60 * 60);
   setcookie('email_value', '', 100000);
   $errors = TRUE;
