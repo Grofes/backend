@@ -137,7 +137,7 @@ else {
 setcookie('bio_value',$_POST['bio'],time()+ 12*30*24*60*60);
 //проверка согласия с политикой конфиденциальности
 if(!isset($_POST['check'])){
-  setcookie('check_error','1',time()+ 24*60*60);
+  setcookie('check_error','1',time()+ 0);
   setcookie('check_value', '', 100000);
   $errors=TRUE;
 }
