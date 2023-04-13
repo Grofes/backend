@@ -112,9 +112,10 @@ if (!isset($_POST['power'])) {
   setcookie('teleport_value', '', 100000);
   setcookie('telepat_value', '', 100000);
   $errors = TRUE;
-  print("Привет мир!");
+  print("Ошибка!");
 }
 else {
+  print("Гуд!");
   $pwrs=$_POST['power'];
   $a=array(
     "immortal_value"=>0,
