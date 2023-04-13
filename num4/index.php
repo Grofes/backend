@@ -60,6 +60,7 @@ if (empty($_POST['name']) or !preg_match($regex_name,$_POST['name'])) {
   setcookie('name_error', '1', time() + 24 * 60 * 60);
   setcookie('name_value', '', 100000);
   $errors = TRUE;
+  print("Ошибка!");
 }
 else {
   setcookie('name_value', $_POST['name'], time() + 12*30 * 24 * 60 * 60);
