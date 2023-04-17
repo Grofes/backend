@@ -52,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   include('form.php');
 }
 else{
-$regex_name="[a-z,A-Z,а-я,А-Я,-]*$";
-$regex_email="[a-z]+\w*@[a-z]+\.[a-z]{2,4}$";
+$regex_name="/^\w+[\w\s-]*$/";
+$regex_email="/^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$/";
 $errors = FALSE;
 //проверка имени
 if (empty($_POST['name']) or !preg_match($regex_name,$_POST['name'])) {
