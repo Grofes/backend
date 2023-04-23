@@ -106,7 +106,7 @@ else {
   setcookie('limb_error','',100000);
 }
 //проверка суперспособностей
-if (!isset($_POST['power'])) {
+if (!isset($_POST['form1'])) {
   setcookie('power_error', '1', time() + 24 * 60 * 60);
   setcookie('immortal_value', '', 100000);
   setcookie('teleport_value', '', 100000);
@@ -114,7 +114,7 @@ if (!isset($_POST['power'])) {
   $errors = TRUE;
 }
 else {
-  $pwrs=$_POST['power'];
+  $pwrs=$_POST['form1'];
   $a=array(
     "immortal_value"=>0,
     "teleport_value"=>0,
@@ -134,7 +134,7 @@ else {
 //запись куки для биографии
 setcookie('bio_value',$_POST['bio'],time()+ 12*30*24*60*60);
 //проверка согласия с политикой конфиденциальности
-if(!isset($_POST['check'])){
+if(!isset($_POST['checked'])){
   setcookie('check_error','1',time()+ 24*60*60);
   setcookie('check_value', '', 100000);
   $errors=TRUE;
