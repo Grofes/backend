@@ -122,8 +122,8 @@ else {
   );
   foreach($pwrs as $pwr){
     if($pwr=='Бессмертие'){setcookie('immortal_value', 1, time() + 12*30 * 24 * 60 * 60); $a['immortal_value']=1;} 
-    if($pwr=='Телепорт'){setcookie('teleport_value', 1, time() + 12*30 * 24 * 60 * 60);$a['teleport_value']=1;} 
-    if($pwr=='Телепатия'){setcookie('telepat_value', 1, time() + 12*30 * 24 * 60 * 60);$a['telepat_value']=1;} 
+    if($pwr=='Телепорт'){setcookie('teleport_value', 2, time() + 12*30 * 24 * 60 * 60);$a['teleport_value']=2;} 
+    if($pwr=='Телепатия'){setcookie('telepat_value', 3, time() + 12*30 * 24 * 60 * 60);$a['telepat_value']=3;} 
   }
   foreach($a as $c=>$val){
     if($val==0){
