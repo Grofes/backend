@@ -1,6 +1,5 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
-$power = array('1','2','3');
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $messages = array();
   if (!empty($_COOKIE['save'])) {
@@ -44,7 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['year'] = empty($_COOKIE['year_value']) ? 0 : $_COOKIE['year_value'];
   $values['sex'] = empty($_COOKIE['sex_value']) ? '' : $_COOKIE['sex_value'];
   $values['limb'] = empty($_COOKIE['limb_value']) ? '' : $_COOKIE['limb_value'];
-  $values['form1'] = empty($_COOKIE['form1_value']) ? 0 : $_COOKIE['form1_value'];
+  $values['1'] = empty($_COOKIE['1_value']) ? 0 : $_COOKIE['1_value'];
+  $values['2'] = empty($_COOKIE['2_value']) ? 0 : $_COOKIE['2_value'];
+  $values['3'] = empty($_COOKIE['3_value']) ? 0 : $_COOKIE['3_value'];
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : $_COOKIE['bio_value'];
   $values['check'] = empty($_COOKIE['check_value']) ? FALSE : $_COOKIE['check_value'];
 
@@ -107,11 +108,28 @@ else {
 //проверка суперспособностей
 if (!isset($_POST['form1'])) {
   setcookie('form1_error', '1', time() + 24 * 60 * 60);
-  setcookie('form1_value', '', 100000);
+  setcookie('1_value', '', 100000);
+  setcookie('2_value', '', 100000);
+  setcookie('3_value', '', 100000);
   $errors = TRUE;
 }
 else {
-  setcookie('form1_value', $_POST['form1'], time() + 12*30 * 24 * 60 * 60);
+  $pwrs=$_POST['form1'];
+  $a=array(
+    "immortal_value"=>0,
+    "teleport_value"=>0,
+    "telepat_value"=>0
+  );
+  foreach($pwrs as $pwr){
+    if($pwr=='Бессмертие'){setcookie('1_value', 1, time() + 12*30 * 24 * 60 * 60); $a['1_value']=1;}
+    if($pwr=='Телепорт'){setcookie('2_value', 1, time() + 12*30 * 24 * 60 * 60);$a['2_value']=1;}
+    if($pwr=='Телепатия'){setcookie('3_value', 1, time() + 12*30 * 24 * 60 * 60);$a['3_value']=1;}
+  }
+  foreach($a as $c=>$val){
+    if($val==0){
+      setcookie($c,'',100000);
+    }
+  }
 }
 //запись куки для биографии
 setcookie('bio_value',$_POST['bio'],time()+ 12*30*24*60*60);
