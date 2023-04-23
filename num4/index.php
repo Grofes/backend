@@ -172,7 +172,7 @@ $check=$_POST['checked'];
 $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
 try {
-  $stmt = $db->prepare("INSERT INTO application SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
+  $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
   $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio,$check));
   $pwr=$db->prepare("INSERT INTO form1 SET power_id=:power,person_id=:person");
   $id=$db->lastInsertId();
