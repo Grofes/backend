@@ -60,7 +60,7 @@ if (!empty($messages)) {
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
     <div  <?php if ($errors['check']) {print 'class="error"';} ?>>
-    <input name="check" type="checkbox"<?php if($values['check']==TRUE){print 'checked';} ?>> Вы согласны с пользовательским соглашением <br>
+    <input name="checked" type="checkbox"<?php if($values['check']==TRUE){print 'checked';} ?>> Вы согласны с пользовательским соглашением <br>
     </div>
     <input type="submit" value="Отправить"/>
   </form>
