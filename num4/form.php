@@ -41,8 +41,8 @@ if (!empty($messages)) {
     </select> <br>
     <label> Ваш пол </label> <br>
     <div <?php if ($errors['sex']) {print 'class="error"';} ?>>
-      <input name="sex" type="radio" value="1" <?php if($values['sex']=="M") {print 'checked';} ?>/> Мужчина
-      <input name="sex" type="radio" value="2" <?php if($values['sex']=="W") {print 'checked';} ?>/> Женщина
+      <input name="sex" type="radio" value="1" <?php if($values['sex']=="1") {print 'checked';} ?>/> Мужчина
+      <input name="sex" type="radio" value="2" <?php if($values['sex']=="2") {print 'checked';} ?>/> Женщина
     </div>
     <label> Сколько у вас конечностей </label> <br>
     <div <?php if ($errors['limb']) {print 'class="error"';} ?>>
