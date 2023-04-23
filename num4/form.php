@@ -52,7 +52,7 @@ if (!empty($messages)) {
       <input name="limb" type="radio" value="4" <?php if($values['limb']=="4") {print 'checked';} ?>/> 4 
     </div>
     <label> Выберите суперспособности </label> <br>
-    <select name="form1[]" size="3" multiple <?php if ($errors['powers']) {print 'class="error"';} ?>>
+    <select name="form1[]" size="3" multiple <?php if ($errors['form1']) {print 'class="error"';} ?>>
       <option value="1" <?php if($values['teleport']==1){print 'selected';} ?>>Телепортация</option>
       <option value="2" <?php if($values['immortal']==2){print 'selected';} ?>>Бессмертие</option>
       <option value="3" <?php if($values['telepat']==3){print 'selected';} ?>>Телепатия</option>
