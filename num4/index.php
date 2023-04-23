@@ -43,9 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['year'] = empty($_COOKIE['year_value']) ? 0 : $_COOKIE['year_value'];
   $values['sex'] = empty($_COOKIE['sex_value']) ? '' : $_COOKIE['sex_value'];
   $values['limb'] = empty($_COOKIE['limb_value']) ? '' : $_COOKIE['limb_value'];
-  $values['immortal'] = empty($_COOKIE['immortal_value']) ? 0 : $_COOKIE['immortal_value'];
-  $values['teleport'] = empty($_COOKIE['teleport_value']) ? 0 : $_COOKIE['teleport_value'];
-  $values['telepat'] = empty($_COOKIE['telepat_value']) ? 0 : $_COOKIE['telepat_value'];
+  $values['form1'] = empty($_COOKIE['form1_value']) ? 0 : $_COOKIE['form1_value'];
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : $_COOKIE['bio_value'];
   $values['check'] = empty($_COOKIE['check_value']) ? FALSE : $_COOKIE['check_value'];
 
@@ -108,28 +106,11 @@ else {
 //проверка суперспособностей
 if (!isset($_POST['form1'])) {
   setcookie('form1_error', '1', time() + 24 * 60 * 60);
-  setcookie('immortal_value', '', 100000);
-  setcookie('teleport_value', '', 100000);
-  setcookie('telepat_value', '', 100000);
+  setcookie('form1_value', '', 100000);
   $errors = TRUE;
 }
 else {
-  $pwrs=$_POST['form1'];
-  $a=array(
-    "immortal_value"=>0,
-    "teleport_value"=>0,
-    "telepat_value"=>0
-  );
-  foreach($pwrs as $pwr){
-    if($pwr=='Бессмертие'){setcookie('immortal_value', 1, time() + 12*30 * 24 * 60 * 60); $a['immortal_value']=1;} 
-    if($pwr=='Телепорт'){setcookie('teleport_value', 2, time() + 12*30 * 24 * 60 * 60);$a['teleport_value']=2;} 
-    if($pwr=='Телепатия'){setcookie('telepat_value', 3, time() + 12*30 * 24 * 60 * 60);$a['telepat_value']=3;} 
-  }
-  foreach($a as $c=>$val){
-    if($val==0){
-      setcookie($c,'',100000);
-    }
-  }
+  setcookie('form1_value', $_POST['form1'], time() + 12*30 * 24 * 60 * 60);
 }
 //запись куки для биографии
 setcookie('bio_value',$_POST['bio'],time()+ 12*30*24*60*60);
