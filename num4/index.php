@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     'year'=>!empty($_COOKIE['year_error']),
     'sex'=>!empty($_COOKIE['sex_error']),
     'limb'=>!empty($_COOKIE['limb_error']),
-    'powers'=>!empty($_COOKIE['power_error']),
+    'form1'=>!empty($_COOKIE['form1_error']),
     'check'=>!empty($_COOKIE['check_error']),
   );
   if ($errors['name']) {
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if ($errors['limb']) {
     $messages[] = '<div class="error">Выберите сколько у вас конечностей.</div>';
   }
-  if ($errors['powers']) {
+  if ($errors['form1']) {
     $messages[] = '<div class="error">Выберите хотя бы одну суперспособность.</div>';
   }
   if ($errors['check']) {
@@ -107,7 +107,7 @@ else {
 }
 //проверка суперспособностей
 if (!isset($_POST['form1'])) {
-  setcookie('power_error', '1', time() + 24 * 60 * 60);
+  setcookie('form1_error', '1', time() + 24 * 60 * 60);
   setcookie('immortal_value', '', 100000);
   setcookie('teleport_value', '', 100000);
   setcookie('telepat_value', '', 100000);
