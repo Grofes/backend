@@ -86,7 +86,7 @@ else {
   setcookie('year_error','',100000);
 }
 //проверка пола
-if (!isset($_POST['sex']) or ($_POST['sex']!='M' and $_POST['sex']!='W')) {
+if (!isset($_POST['sex']) or ($_POST['sex']!='1' and $_POST['sex']!='2')) {
   setcookie('sex_error', '1', time() + 24 * 60 * 60);
   setcookie('sex_value', '', 100000);
   $errors = TRUE;
@@ -168,15 +168,22 @@ $bio=$_POST['bio'];
 $powers=$_POST['power'];
 $user = 'u52821';
 $pass = '8567731';
+$check=$_POST['checked'];
 $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
 try {
-  $stmt = $db->prepare("INSERT INTO application SET name=?,email=?,year=?,sex=?,limb=?,bio=?");
-  $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio));
+  $stmt = $db->prepare("INSERT INTO application SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
+  $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio,$check));
+  $pwr=$db->prepare("INSERT INTO form1 SET power_id=:power,person_id=:person");
   $id=$db->lastInsertId();
-  $pwr=$db->prepare("INSERT INTO supers SET power_name=?,uid=?");
-  foreach($powers as $power){ 
-    $pwr->execute(array($power,$id));  
+  $pwr->bindParam(':person', $id);
+  foreach($_POST['form1'] as $power){  
+    $pwr->bindParam(':power', $power);
+        if($pwr->execute()==false){
+          print_r($pwr->errorCode());
+          print_r($pwr->errorInfo());
+          exit();
+        }
   }
 }
 catch(PDOException $e){
