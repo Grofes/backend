@@ -30,10 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if ($errors['limb']) {
     $messages[] = '<div class="error">Выберите сколько у вас конечностей.</div>';
   }
-  if ($errors['power']) {
+  if ($errors['form1']) {
     $messages[] = '<div class="error">Выберите хотя бы одну суперспособность.</div>';
   }
-  if ($errors['check']) {
+  if ($errors['checked']) {
     $messages[] = '<div class="error">Необходимо согласиться с политикой конфиденциальности.</div>';
   }
 
