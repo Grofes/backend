@@ -116,13 +116,13 @@ if (!isset($_POST['form1'])) {
 else {
   $pwrs=$_POST['form1'];
   $a=array(
-    "immortal_value"=>0,
-    "teleport_value"=>0,
-    "telepat_value"=>0
+    "1_value"=>0,
+    "2_value"=>0,
+    "3_value"=>0
   );
   foreach($pwrs as $pwr){
-    if($pwr=='Бессмертие'){setcookie('1_value', 1, time() + 12*30 * 24 * 60 * 60); $a['1_value']=1;}
-    if($pwr=='Телепорт'){setcookie('2_value', 1, time() + 12*30 * 24 * 60 * 60);$a['2_value']=1;}
+    if($pwr=='Телепортация'){setcookie('1_value', 1, time() + 12*30 * 24 * 60 * 60); $a['1_value']=1;}
+    if($pwr=='Бессмертие'){setcookie('2_value', 1, time() + 12*30 * 24 * 60 * 60);$a['2_value']=1;}
     if($pwr=='Телепатия'){setcookie('3_value', 1, time() + 12*30 * 24 * 60 * 60);$a['3_value']=1;}
   }
   foreach($a as $c=>$val){
