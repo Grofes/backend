@@ -135,7 +135,7 @@ else {
   setcookie('year_error', '', 100000);
   setcookie('sex_error', '', 100000);
   setcookie('limb_error', '', 100000);
-  setcookie('power_error', '', 100000);
+  setcookie('form1_error', '', 100000);
   setcookie('bio_error', '', 100000);
   setcookie('check_error', '', 100000);
 }
@@ -146,7 +146,7 @@ $year=$_POST['year'];
 $sex=$_POST['sex'];
 $limb=$_POST['limb'];
 $bio=$_POST['bio'];
-$powers=$_POST['power'];
+$powers=$_POST['form1'];
 $user = 'u52821';
 $pass = '8567731';
 $check=$_POST['checked'];
@@ -158,7 +158,7 @@ try {
   $pwr=$db->prepare("INSERT INTO form1 SET power_id=:power,person_id=:person");
   $id=$db->lastInsertId();
   $pwr->bindParam(':person', $id);
-  foreach($_POST['form1'] as $power){  
+  foreach($powers as $power){  
     $pwr->bindParam(':power', $power);
         if($pwr->execute()==false){
           print_r($pwr->errorCode());
