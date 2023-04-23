@@ -1,5 +1,5 @@
 <style>
-  .form1{
+  .styleForm{
     max-width: 960px;
     text-align: center;
     margin: 0 auto;
@@ -19,7 +19,7 @@ if (!empty($messages)) {
   print('</div>');
 }
 ?>
-  <div class="form1">
+  <div class="styleForm">
   <form action="index.php" method="POST">
     <label> ФИО </label> <br>
     <input name="name" <?php if ($errors['name']) {print 'class="error"';} ?> value="<?php print $values['name']; ?>" /> <br>
