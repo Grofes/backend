@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     'year'=>!empty($_COOKIE['year_error']),
     'sex'=>!empty($_COOKIE['sex_error']),
     'limb'=>!empty($_COOKIE['limb_error']),
-    'power'=>!empty($_COOKIE['power_error']),
+    'powers'=>!empty($_COOKIE['power_error']),
     'check'=>!empty($_COOKIE['check_error']),
   );
   if ($errors['name']) {
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if ($errors['limb']) {
     $messages[] = '<div class="error">Выберите сколько у вас конечностей.</div>';
   }
-  if ($errors['power']) {
+  if ($errors['powers']) {
     $messages[] = '<div class="error">Выберите хотя бы одну суперспособность.</div>';
   }
   if ($errors['check']) {
