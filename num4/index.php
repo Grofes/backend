@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     'year'=>!empty($_COOKIE['year_error']),
     'sex'=>!empty($_COOKIE['sex_error']),
     'limb'=>!empty($_COOKIE['limb_error']),
-    'power'=>!empty($_COOKIE['power_error']),
-    'check'=>!empty($_COOKIE['check_error']),
+    'form1'=>!empty($_COOKIE['power_error']),
+    'checked'=>!empty($_COOKIE['check_error']),
   );
   if ($errors['name']) {
     $messages[] = '<div class="error">Заполните или исправьте имя.</div>';
