@@ -1,13 +1,3 @@
-<style>
-  .form1{
-    max-width: 960px;
-    text-align: center;
-    margin: 0 auto;
-  }
-  .error {
-    border: 2px solid red;
-  }
-</style>
 <body>
 <?php
 if (!empty($messages)) {
@@ -29,7 +19,7 @@ if (!empty($messages)) {
     <select name="year" <?php if ($errors['year']) {print 'class="error"';} ?>>
       <option value="Выбрать">Выбрать</option>
     <?php
-        for($i=1800;$i<=2022;$i++){
+        for($i=1800;$i<=2023;$i++){
           if($values['year']==$i){
             printf("<option value=%d selected>%d год</option>",$i,$i);
           }
@@ -41,8 +31,8 @@ if (!empty($messages)) {
     </select> <br>
     <label> Ваш пол </label> <br>
     <div <?php if ($errors['sex']) {print 'class="error"';} ?>>
-      <input name="sex" type="radio" value="M" <?php if($values['sex']=="M") {print 'checked';} ?>/> Мужчина
-      <input name="sex" type="radio" value="W" <?php if($values['sex']=="W") {print 'checked';} ?>/> Женщина
+      <input name="sex" type="radio" value="1" <?php if($values['sex']=="1") {print 'checked';} ?>/> Мужчина
+      <input name="sex" type="radio" value="2" <?php if($values['sex']=="2") {print 'checked';} ?>/> Женщина
     </div>
     <label> Сколько у вас конечностей </label> <br>
     <div <?php if ($errors['limb']) {print 'class="error"';} ?>>
@@ -52,10 +42,10 @@ if (!empty($messages)) {
       <input name="limb" type="radio" value="4" <?php if($values['limb']=="4") {print 'checked';} ?>/> 4 
     </div>
     <label> Выберите суперспособности </label> <br>
-    <select name="power[]" size="3" multiple <?php if ($errors['powers']) {print 'class="error"';} ?>>
-      <option value="Телепортация" <?php if($values['teleport']==1){print 'selected';} ?>>Бессмертие</option>
-      <option value="Бессмертие" <?php if($values['immortal']==1){print 'selected';} ?>>Прохождение сквозь стены</option>
-      <option value="Телепатия" <?php if($values['telepat']==1){print 'selected';} ?>>Левитация</option>
+    <select name="form1[]" size="3" multiple <?php if ($errors['form1']) {print 'class="error"';} ?>>
+      <option value="1" <?php if($values['1']==1){print 'selected';} ?>>Бессмертие</option>
+      <option value="2" <?php if($values['2']==1){print 'selected';} ?>>Прохождение сквозь стены</option>
+      <option value="3" <?php if($values['3']==1){print 'selected';} ?>>Левитация</option>
     </select> <br>
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
@@ -71,7 +61,7 @@ if (!empty($messages)) {
     if(empty($_SESSION['login'])){
     print('
     <div  '.$cl_e.' >
-    <input name="check" type="checkbox" '.$ch.'> Вы согласны с пользовательским соглашением <br>
+    <input name="checked" type="checkbox" '.$ch.'> Вы согласны с пользовательским соглашением <br>
     </div>');}
     ?>
     <input type="submit" value="Отправить"/>
