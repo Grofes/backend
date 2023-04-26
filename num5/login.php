@@ -30,10 +30,12 @@ else {
   $p=$_POST['password'];
   $uid=0;
   $error=TRUE;
-  require_once('connect.php');
+  $user = 'u52821';
+  $pass = '8567731';
+  $db1 = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
   if(!empty($l) and !empty($p)){
     try{
-      $chk=$db->prepare("select * from users where login=?");
+      $chk=$db1->prepare("select * from users where login=?");
       $chk->execute(array($l));
       $username=$chk->fetchALL();
       print($username[0]['password']);
