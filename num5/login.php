@@ -37,8 +37,8 @@ else {
       $chk->bindParam(1,$l);
       $chk->execute();
       $username=$chk->fetchALL();
-      if(password_verify($p,$username[0]['password'])){
-        $uid=$username[0]['id'];
+      if(password_verify($p,$username[1]['password'])){
+        $uid=$username[1]['id'];
         $error=FALSE;
       }
     }
