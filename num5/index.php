@@ -139,7 +139,7 @@ else {
       $check=$_POST['checked'];
     }
     $errors = FALSE;
-    if (empty($name) or preg_match($regex_name,$name)) {
+    if (empty($name) or !preg_match($regex_name,$name)) {
       setcookie('name_error', '1', time() + 24*60 * 60);
       setcookie('name_value', '', 100000);
       $errors = TRUE;
