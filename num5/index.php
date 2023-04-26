@@ -126,8 +126,8 @@ else {
     header('Location: index.php');
   }
   else{
-    $regex_name="/^\w+[\w\s-]*$/";
-    $regex_email="/^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$/";
+    $regex_name='/[a-z,A-Z,а-я,А-Я,-]*$/';
+    $regex_email='/[a-z]+\w*@[a-z]+\.[a-z]{2,4}$/';
     $name=$_POST['name'];
     $email=$_POST['email'];
     $year=$_POST['year'];
