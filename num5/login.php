@@ -33,7 +33,7 @@ else {
   require_once('connect.php');
   if(!empty($l) and !empty($p)){
     try{
-      $chk=$db1->prepare("select * from users where login=?");
+      $chk=$db->prepare("select * from users where login=?");
       $chk->execute(array($l));
       $username=$chk->fetchALL();
       if(password_verify($p,$username[0]['password'])){
