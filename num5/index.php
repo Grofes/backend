@@ -95,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $values['sex']=$inf[0]['sex'];
       $values['limb']=$inf[0]['limb'];
       $values['bio']=$inf[0]['bio'];
+      $values['checked']=$inf[0]['checked'];
 
       $get2=$db->prepare("select power_id from form1 where person_id=?");
       $get2->bindParam(1,$_SESSION['uid']);
