@@ -1,13 +1,3 @@
-<style>
-  .styleForm{
-    max-width: 960px;
-    text-align: center;
-    margin: 0 auto;
-  }
-  .error {
-    border: 2px solid red;
-  }
-</style>
 <body>
 <?php
 if (!empty($messages)) {
