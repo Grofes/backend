@@ -102,13 +102,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $get2->execute();
       $inf2=$get2->fetchALL();
       for($i=0;$i<count($inf2);$i++){
-        if($inf2[$i]['power_id']=='Бессмертие'){
+        if($inf2[$i]['power_id']=='1'){
           $values['1']=1;
         }
-        if($inf2[$i]['power_id']=='Телепортация'){
+        if($inf2[$i]['power_id']=='2'){
           $values['2']=1;
         }
-        if($inf2[$i]['power_id']=='Телепатия'){
+        if($inf2[$i]['power_id']=='3'){
           $values['3']=1;
         }
       }
@@ -204,9 +204,9 @@ else {
         "3_value"=>0
       );
       foreach($pwrs as $pwr){
-        if($pwr=='Бессмертие'){setcookie('1_value', 1, time() + 60 * 60); $a['1_value']=1;} 
-        if($pwr=='Телепортация'){setcookie('2_value', 1, time() + 60 * 60);$a['2_value']=1;} 
-        if($pwr=='Телепатия'){setcookie('3_value', 1, time() + 60 * 60);$a['3_value']=1;} 
+        if($pwr=='1'){setcookie('1_value', 1, time() + 60 * 60); $a['1_value']=1;} 
+        if($pwr=='2'){setcookie('2_value', 1, time() + 60 * 60);$a['2_value']=1;} 
+        if($pwr=='3'){setcookie('3_value', 1, time() + 60 * 60);$a['3_value']=1;} 
       }
       foreach($a as $c=>$val){
         if($val==0){
@@ -266,7 +266,7 @@ else {
 
         try {
           $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
-          $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio));
+          $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio,$checked));
           $id=$db->lastInsertId();
           $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
           foreach($powers as $power){ 
@@ -284,6 +284,6 @@ else {
     if(!$errors){
       setcookie('save', '1');
     }
-    header('Location: ./');
+    //header('Location: ./');
   }
 }
