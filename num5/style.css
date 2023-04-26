@@ -1,1 +1,17 @@
 
+/*Глобальные параметры*/
+
+* {margin: 0; padding: 0;}
+
+body {
+    font-family: roboto, sans-serif;
+    background-color: skyblue;
+    text-align: center;
+}
+
+.fr1 {
+    max-width: 960px;
+    text-align: center;
+    margin: 0 auto;
+    padding-top:50px;
+}
