@@ -259,17 +259,17 @@ else {
     else {
       if(!$errors){
         $login = 'N'.substr(uniqid(),-6);
-        $pass = substr(md5(uniqid()),0,15);
-        $hashed=password_hash($pass,PASSWORD_DEFAULT);
+        $password = substr(md5(uniqid()),0,15);
+        $hashed=password_hash($password,PASSWORD_DEFAULT);
         setcookie('login', $login);
-        setcookie('pass_in', $pass);
+        setcookie('password', $password);
 
         try {
           $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
-          $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio,$checked));
+          $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio,$check));
           $id=$db->lastInsertId();
           $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
-          foreach($powers as $power){ 
+          foreach($pwrs as $power){ 
             $pwr->execute(array($power,$id));
           }
           $usr=$db->prepare("insert into users set id=?,login=?,password=?");
@@ -284,6 +284,6 @@ else {
     if(!$errors){
       setcookie('save', '1');
     }
-    //header('Location: ./');
+    header('Location: ./');
   }
 }
