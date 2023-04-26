@@ -37,8 +37,9 @@ else {
       $chk->bindParam(1,$l);
       $chk->execute();
       $username=$chk->fetchALL();
-      if(password_verify($p,$username[1]['password'])){
-        $uid=$username[1]['id'];
+      print($username[0]['password']);
+      if(password_verify($p,$username[0]['password'])){
+        $uid=$username[0]['id'];
         $error=FALSE;
       }
     }
@@ -57,5 +58,5 @@ else {
   // Записываем ID пользователя.
   $_SESSION['uid'] = $uid;
   // Делаем перенаправление.
-  header('Location: index.php');
+  //header('Location: index.php');
 }
