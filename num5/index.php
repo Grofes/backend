@@ -21,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     setcookie('sex_value', '', 100000);
     setcookie('limb_value', '', 100000);
     setcookie('bio_value', '', 100000);
-    setcookie('immortal_value', '', 100000);
-    setcookie('telepat_value', '', 100000);
-    setcookie('teleport_value', '', 100000);
+    setcookie('1', '', 100000);
+    setcookie('2', '', 100000);
+    setcookie('3', '', 100000);
     setcookie('check_value', '', 100000);
   }
 
@@ -34,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $errors['year'] = !empty($_COOKIE['year_error']);
   $errors['sex'] = !empty($_COOKIE['sex_error']);
   $errors['limb'] = !empty($_COOKIE['limb_error']);
-  $errors['power'] = !empty($_COOKIE['power_error']);
-  $errors['check'] = !empty($_COOKIE['check_error']);
+  $errors['form1'] = !empty($_COOKIE['form1_error']);
+  $errors['checked'] = !empty($_COOKIE['checked_error']);
   if ($errors['name']) {
     setcookie('name_error', '', 100000);
     $messages[] = '<div class="error">Заполните имя.</div>';
@@ -61,13 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $messages[] = '<div class="error">Выберите сколько у вас конечностей.</div>';
     $error=TRUE;
   }
-  if ($errors['power']) {
-    setcookie('power_error', '', 100000);
+  if ($errors['form1']) {
+    setcookie('form1_error', '', 100000);
     $messages[] = '<div class="error">Выберите хотя бы одну суперспособность.</div>';
     $error=TRUE;
   }
-  if ($errors['check']) {
-    setcookie('check_error', '', 100000);
+  if ($errors['checked']) {
+    setcookie('checked_error', '', 100000);
     $messages[] = '<div class="error">Необходимо согласиться с политикой конфиденциальности.</div>';
     $error=TRUE;
   }
@@ -77,11 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['year'] = empty($_COOKIE['year_value']) ? 0 : $_COOKIE['year_value'];
   $values['sex'] = empty($_COOKIE['sex_value']) ? '' : $_COOKIE['sex_value'];
   $values['limb'] = empty($_COOKIE['limb_value']) ? '' : $_COOKIE['limb_value'];
-  $values['immortal'] = empty($_COOKIE['immortal_value']) ? 0 : $_COOKIE['immortal_value'];
-  $values['teleport'] = empty($_COOKIE['teleport_value']) ? 0 : $_COOKIE['teleport_value'];
-  $values['telepat'] = empty($_COOKIE['telepat_value']) ? 0 : $_COOKIE['telepat_value'];
+  $values['1'] = empty($_COOKIE['1_value']) ? 0 : $_COOKIE['1_value'];
+  $values['2'] = empty($_COOKIE['2_value']) ? 0 : $_COOKIE['2_value'];
+  $values['3'] = empty($_COOKIE['3_value']) ? 0 : $_COOKIE['3_value'];
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : strip_tags($_COOKIE['bio_value']);
-  $values['check'] = empty($_COOKIE['check_value']) ? FALSE : $_COOKIE['check_value'];
+  $values['checked'] = empty($_COOKIE['checked_value']) ? FALSE : $_COOKIE['checked_value'];
   if (!$error and !empty($_COOKIE[session_name()]) and !empty($_SESSION['login'])) {
     require('connect.php');
     try{
@@ -102,13 +102,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $inf2=$get2->fetchALL();
       for($i=0;$i<count($inf2);$i++){
         if($inf2[$i]['p_name']=='Бессмертие'){
-          $values['immortal']=1;
+          $values['1']=1;
         }
         if($inf2[$i]['p_name']=='Телепортация'){
-          $values['teleport']=1;
+          $values['2']=1;
         }
         if($inf2[$i]['p_name']=='Телепатия'){
-          $values['telepat']=1;
+          $values['3']=1;
         }
       }
     }
@@ -126,17 +126,17 @@ else {
     header('Location: index.php');
   }
   else{
-    $regex_name='/[a-z,A-Z,а-я,А-Я,-]*$/';
-    $regex_email='/[a-z]+\w*@[a-z]+\.[a-z]{2,4}$/';
+    $regex_name="/^\w+[\w\s-]*$/";
+    $regex_email="/^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$/";
     $name=$_POST['name'];
     $email=$_POST['email'];
     $year=$_POST['year'];
     $sex=$_POST['sex'];
     $limb=$_POST['limb'];
-    $pwrs=$_POST['power'];
+    $pwrs=$_POST['form1'];
     $bio=$_POST['bio'];
     if(empty($_SESSION['login'])){
-      $check=$_POST['check'];
+      $check=$_POST['checked'];
     }
     $errors = FALSE;
     if (empty($name) or preg_match($regex_name,$name)) {
@@ -159,7 +159,7 @@ else {
       setcookie('email_error','',100000);
     }
     //проверка года
-    if ($year=='Выбрать' or ($year<1800 and $year>2022)) {
+    if ($year=='Выбрать' or ($year<1800 and $year>2023)) {
       setcookie('year_error', '1', time() + 24 * 60 * 60);
       setcookie('year_value', '', 100000);
       $errors = TRUE;
@@ -169,7 +169,7 @@ else {
       setcookie('year_error','',100000);
     }
     //проверка пола
-    if (!isset($sex)  or ($sex!='M' and $sex!='W')) {
+    if (!isset($sex)  or ($sex!='1' and $sex!='2')) {
       setcookie('sex_error', '1', time() + 24 * 60 * 60);
       setcookie('sex_value', '', 100000);
       $errors = TRUE;
@@ -190,22 +190,22 @@ else {
     }
     //проверка суперспособностей
     if (!isset($pwrs)) {
-      setcookie('powers_error', '1', time() + 24 * 60 * 60);
-      setcookie('immortal_value', '', 100000);
-      setcookie('teleport_value', '', 100000);
-      setcookie('telepat_value', '', 100000);
+      setcookie('form1_error', '1', time() + 24 * 60 * 60);
+      setcookie('1_value', '', 100000);
+      setcookie('2_value', '', 100000);
+      setcookie('3_value', '', 100000);
       $errors = TRUE;
     }
     else {
       $a=array(
-        "immortal_value"=>0,
-        "teleport_value"=>0,
-        "telepat_value"=>0
+        "1_value"=>0,
+        "2_value"=>0,
+        "3_value"=>0
       );
       foreach($pwrs as $pwr){
-        if($pwr=='Бессмертие'){setcookie('immortal_value', 1, time() + 60 * 60); $a['immortal_value']=1;} 
-        if($pwr=='Телепортация'){setcookie('teleport_value', 1, time() + 60 * 60);$a['teleport_value']=1;} 
-        if($pwr=='Телепатия'){setcookie('telepat_value', 1, time() + 60 * 60);$a['telepat_value']=1;} 
+        if($pwr=='Бессмертие'){setcookie('1_value', 1, time() + 60 * 60); $a['1_value']=1;} 
+        if($pwr=='Телепортация'){setcookie('2_value', 1, time() + 60 * 60);$a['2_value']=1;} 
+        if($pwr=='Телепатия'){setcookie('3_value', 1, time() + 60 * 60);$a['3_value']=1;} 
       }
       foreach($a as $c=>$val){
         if($val==0){
@@ -220,13 +220,13 @@ else {
     //проверка согласия с политикой конфиденциальности
     if(empty($_SESSION['login'])){
       if(!isset($check)){
-        setcookie('check_error','1',time()+ 24*60*60);
-        setcookie('check_value', '', 100000);
+        setcookie('checked_error','1',time()+ 24*60*60);
+        setcookie('checked_value', '', 100000);
         $errors=TRUE;
       }
       else{
-        setcookie('check_value',TRUE,time()+ 60*60);
-        setcookie('check_error','',100000);
+        setcookie('checked_value',TRUE,time()+ 60*60);
+        setcookie('checked_error','',100000);
       }
     }
     if ($errors) {
@@ -239,8 +239,8 @@ else {
       setcookie('year_error', '', 100000);
       setcookie('sex_error', '', 100000);
       setcookie('limb_error', '', 100000);
-      setcookie('power_error', '', 100000);
-      setcookie('check_error', '', 100000);
+      setcookie('form1_error', '', 100000);
+      setcookie('checked_error', '', 100000);
     }
     
     require('connect.php');
