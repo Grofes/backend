@@ -34,8 +34,7 @@ else {
   if(!empty($l) and !empty($p)){
     try{
       $chk=$db->prepare("select * from users where login=?");
-      $chk->bindParam(1,$l);
-      $chk->execute();
+      $chk->execute(array($l));
       $username=$chk->fetchALL();
       print($username[0]['password']);
       if(password_verify($p,$username[0]['password'])){
