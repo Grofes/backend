@@ -7,13 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (!empty($_COOKIE['save'])) {
     setcookie('save', '', 100000);
     setcookie('login', '', 100000);
-    setcookie('pass_in', '', 100000);
+    setcookie('password', '', 100000);
     $messages[] = 'Спасибо, результаты сохранены.';
-    if (!empty($_COOKIE['pass_in'])) {
+    if (!empty($_COOKIE['password'])) {
       $messages[] = sprintf('Вы можете <a href="login.php">войти</a> с логином <strong>%s</strong>
         и паролем <strong>%s</strong> для изменения данных.',
         strip_tags($_COOKIE['login']),
-        strip_tags($_COOKIE['pass_in']));
+        strip_tags($_COOKIE['password']));
     }
     setcookie('name_value', '', 100000);
     setcookie('mail_value', '', 100000);
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $values['bio']=$inf[0]['bio'];
 
       $get2=$db->prepare("select power_id from form1 where person_id=?");
-      $get2->bindParam(1,$_SESSION['person_id']);
+      $get2->bindParam(1,$_SESSION['uid']);
       $get2->execute();
       $inf2=$get2->fetchALL();
       for($i=0;$i<count($inf2);$i++){
