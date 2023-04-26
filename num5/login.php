@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 else {
   $l=$_POST['login'];
-  $p=$_POST['pass'];
+  $p=$_POST['password'];
   $uid=0;
   $error=TRUE;
   require_once('connect.php');
