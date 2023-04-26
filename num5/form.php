@@ -44,8 +44,8 @@ if (!empty($messages)) {
     <label> Выберите суперспособности </label> <br>
     <select name="form1[]" size="3" multiple <?php if ($errors['form1']) {print 'class="error"';} ?>>
       <option value="1" <?php if($values['1']==1){print 'selected';} ?>>Бессмертие</option>
-      <option value="2" <?php if($values['2']==1){print 'selected';} ?>>Прохождение сквозь стены</option>
-      <option value="3" <?php if($values['3']==1){print 'selected';} ?>>Левитация</option>
+      <option value="2" <?php if($values['2']==1){print 'selected';} ?>>Телепортация</option>
+      <option value="3" <?php if($values['3']==1){print 'selected';} ?>>Телепатия</option>
     </select> <br>
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
