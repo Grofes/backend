@@ -59,5 +59,5 @@ else {
   // Записываем ID пользователя.
   $_SESSION['uid'] = $uid;
   // Делаем перенаправление.
-  //header('Location: index.php');
+  header('Location: index.php');
 }
