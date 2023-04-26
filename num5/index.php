@@ -21,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     setcookie('sex_value', '', 100000);
     setcookie('limb_value', '', 100000);
     setcookie('bio_value', '', 100000);
-    setcookie('1', '', 100000);
-    setcookie('2', '', 100000);
-    setcookie('3', '', 100000);
-    setcookie('check_value', '', 100000);
+    setcookie('1_value', '', 100000);
+    setcookie('2_value', '', 100000);
+    setcookie('3_value', '', 100000);
+    setcookie('checked_value', '', 100000);
   }
 
   $errors = array();
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (!$error and !empty($_COOKIE[session_name()]) and !empty($_SESSION['login'])) {
     require('connect.php');
     try{
-      $get=$db->prepare("select * from application where id=?");
+      $get=$db->prepare("select * from form where id=?");
       $get->bindParam(1,$_SESSION['uid']);
       $get->execute();
       $inf=$get->fetchALL();
@@ -96,18 +96,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $values['limb']=$inf[0]['limb'];
       $values['bio']=$inf[0]['bio'];
 
-      $get2=$db->prepare("select p_name from supers where uid=?");
-      $get2->bindParam(1,$_SESSION['uid']);
+      $get2=$db->prepare("select power_id from form1 where person_id=?");
+      $get2->bindParam(1,$_SESSION['person_id']);
       $get2->execute();
       $inf2=$get2->fetchALL();
       for($i=0;$i<count($inf2);$i++){
-        if($inf2[$i]['p_name']=='Бессмертие'){
+        if($inf2[$i]['power_id']=='Бессмертие'){
           $values['1']=1;
         }
-        if($inf2[$i]['p_name']=='Телепортация'){
+        if($inf2[$i]['power_id']=='Телепортация'){
           $values['2']=1;
         }
-        if($inf2[$i]['p_name']=='Телепатия'){
+        if($inf2[$i]['power_id']=='Телепатия'){
           $values['3']=1;
         }
       }
@@ -246,11 +246,11 @@ else {
     require('connect.php');
     if (!empty($_COOKIE[session_name()]) && !empty($_SESSION['login']) and !$errors) {
       $id=$_SESSION['uid'];
-      $upd=$db->prepare("update application set name=?,email=?,year=?,sex=?,limb=?,bio=? where id=?");
+      $upd=$db->prepare("update form set name=?,email=?,year=?,sex=?,limb=?,bio=? where id=?");
       $upd->execute(array($name,$email,$year,$sex,$limb,$bio,$id));
-      $del=$db->prepare("delete from supers where uid=?");
+      $del=$db->prepare("delete from form1 where person_id=?");
       $del->execute(array($id));
-      $upd1=$db->prepare("insert into supers set p_name=?,uid=?");
+      $upd1=$db->prepare("insert into form1 set power_id=?,person_id=?");
       foreach($pwrs as $pwr){
         $upd1->execute(array($pwr,$id));
       }
@@ -264,10 +264,10 @@ else {
         setcookie('pass_in', $pass);
 
         try {
-          $stmt = $db->prepare("INSERT INTO application SET name=?,email=?,year=?,sex=?,limb=?,bio=?");
+          $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
           $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio));
           $id=$db->lastInsertId();
-          $pwr=$db->prepare("INSERT INTO supers SET p_name=?,uid=?");
+          $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
           foreach($powers as $power){ 
             $pwr->execute(array($power,$id));
           }
