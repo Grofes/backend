@@ -245,7 +245,7 @@ else {
     }
     
     require('connect.php');
-    if (!empty($_COOKIE[session_name()]) && !empty($_SESSION['login']) and !$errors) {
+      if (!empty($_COOKIE[session_name()]) && !empty($_SESSION['login']) and !$errors) {
       $id=$_SESSION['uid'];
       $upd=$db->prepare("update form set name=?,email=?,year=?,sex=?,limb=?,bio=? where id=?");
       $upd->execute(array($name,$email,$year,$sex,$limb,$bio,$id));
@@ -261,9 +261,9 @@ else {
         $login = 'N'.substr(uniqid(),-6);
         $password = substr(md5(uniqid()),0,15);
         $hashed=password_hash($password,PASSWORD_DEFAULT);
+        print($hashed);
         setcookie('login', $login);
         setcookie('password', $password);
-
         try {
           $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
           $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio,$check));
