@@ -44,6 +44,7 @@ else {
       print('3');
       $username=$chk->fetchALL();
       print('4');
+      print($p);
       print($username[0]['password']);
       if(password_verify($p,$username[0]['password'])){
         print('5');
