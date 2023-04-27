@@ -36,7 +36,7 @@ else {
   if(!empty($login) and !empty($password)){
     try{
       print('Зашло');
-      $chk=$db1->prepare("select * from users where login=?");
+      $chk=$db1->prepare("select * from user_info where login=?");
       print('1');
       $chk->bindParam(1,$login);
       print('2');
@@ -68,5 +68,5 @@ else {
   // Записываем ID пользователя.
   $_SESSION['uid'] = $uid;
   // Делаем перенаправление.
-  //header('Location: index.php');
+  header('Location: index.php');
 }
