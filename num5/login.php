@@ -33,13 +33,15 @@ else {
   $user = 'u52821';
   $pass = '8567731';
   $db1 = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+  print('Не зашло');
   if(!empty($l) and !empty($p)){
+    print('Зашло');
     try{
       $chk=$db1->prepare("select * from users where login=?");
       $chk->bindParam(1,$login);
       $chk->execute();
       $username=$chk->fetchALL();
-      print(password_verify($p,$username[0]['password']));
+      print($username[0]['password']);
       if(password_verify($p,$username[0]['password'])){
         $uid=$username[0]['id'];
         $error=FALSE;
