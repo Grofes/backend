@@ -26,27 +26,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
 }
 else {
-  $l=$_POST['login'];
-  $p=$_POST['password'];
+  $login=$_POST['login'];
+  $password=$_POST['password'];
   $uid=0;
   $error=TRUE;
   $user = 'u52821';
   $pass = '8567731';
   $db1 = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-  if(!empty($l) and !empty($p)){
+  if(!empty($login) and !empty($password)){
     try{
       print('Зашло');
       $chk=$db1->prepare("select * from users where login=?");
       print('1');
-      $chk->bindParam(1,$l);
+      $chk->bindParam(1,$login);
       print('2');
       $chk->execute();
       print('3');
       $username=$chk->fetchALL();
       print('4');
-      print($p);
+      print($password);
       print($username[0]['password']);
-      if(password_verify($p,$username[0]['password'])){
+      if(password_verify($password,$username[0]['password'])){
         print('5');
         $uid=$username[0]['id'];
         $error=FALSE;
@@ -64,7 +64,7 @@ else {
     exit();
   }
   // Если все ок, то авторизуем пользователя.
-  $_SESSION['login'] = $l;
+  $_SESSION['login'] = $login;
   // Записываем ID пользователя.
   $_SESSION['uid'] = $uid;
   // Делаем перенаправление.
