@@ -30,9 +30,9 @@ else {
   $password=$_POST['password'];
   $uid=0;
   $error=TRUE;
-  $user = 'art';
-  $pass = 'password';
-  $db1 = new PDO('mysql:host=localhost;dbname=my_db_artem', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+  $user = 'u52821';
+  $pass = '8567731';
+  $db1 = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
   if(!empty($login) and !empty($password)){
     try{
       print('Зашло');
