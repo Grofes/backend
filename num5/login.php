@@ -35,13 +35,10 @@ else {
   $db1 = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
   if(!empty($login) and !empty($password)){
     try{
-      print('Зашло');
       $chk=$db1->prepare("select * from users where login=?");
       $chk->bindParam(1,$login);
       $chk->execute();
       $username=$chk->fetchALL();
-      print($password);
-      print($username[0]['password']);
       if(password_verify($password,$username[0]['password'])){
         $uid=$username[0]['id'];
         $error=FALSE;
