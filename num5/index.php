@@ -83,7 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : strip_tags($_COOKIE['bio_value']);
   $values['checked'] = empty($_COOKIE['checked_value']) ? FALSE : $_COOKIE['checked_value'];
   if (!$error and !empty($_COOKIE[session_name()]) and !empty($_SESSION['login'])) {
-    require('connect.php');
+    $user = 'u52821';
+    $pass = '8567731';
+    $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
     try{
       $get=$db->prepare("select * from form where id=?");
       $get->bindParam(1,$_SESSION['uid']);
@@ -244,43 +246,45 @@ else {
       setcookie('checked_error', '', 100000);
     }
     
-    require('connect.php');
-      if (!empty($_COOKIE[session_name()]) && !empty($_SESSION['login']) and !$errors) {
-      $id=$_SESSION['uid'];
-      $upd=$db->prepare("update form set name=?,email=?,year=?,sex=?,limb=?,bio=? where id=?");
-      $upd->execute(array($name,$email,$year,$sex,$limb,$bio,$id));
-      $del=$db->prepare("delete from form1 where person_id=?");
-      $del->execute(array($id));
-      $upd1=$db->prepare("insert into form1 set power_id=?,person_id=?");
-      foreach($pwrs as $pwr){
-        $upd1->execute(array($pwr,$id));
+    $user = 'u52821';
+    $pass = '8567731';
+    $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+    if (!empty($_COOKIE[session_name()]) && !empty($_SESSION['login']) and !$errors) {
+    $id=$_SESSION['uid'];
+    $upd=$db->prepare("update form set name=?,email=?,year=?,sex=?,limb=?,bio=? where id=?");
+    $upd->execute(array($name,$email,$year,$sex,$limb,$bio,$id));
+    $del=$db->prepare("delete from form1 where person_id=?");
+    $del->execute(array($id));
+    $upd1=$db->prepare("insert into form1 set power_id=?,person_id=?");
+    foreach($pwrs as $pwr){
+      $upd1->execute(array($pwr,$id));
+    }
+  }
+  else {
+    if(!$errors){
+      $login = 'N'.substr(uniqid(),-6);
+      $password = substr(md5(uniqid()),0,15);
+      $hashed=password_hash($password,PASSWORD_DEFAULT);
+      print($hashed);
+      setcookie('login', $login);
+      setcookie('password', $password);
+      try {
+        $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
+        $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio,$check));
+        $id=$db->lastInsertId();
+        $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
+        foreach($pwrs as $power){ 
+          $pwr->execute(array($power,$id));
+        }
+        $usr=$db->prepare("insert into users set id=?,login=?,password=?");
+        $usr->execute(array($id,$login,$hashed));
+      }
+      catch(PDOException $e){
+        print('Error : ' . $e->getMessage());
+        exit();
       }
     }
-    else {
-      if(!$errors){
-        $login = 'N'.substr(uniqid(),-6);
-        $password = substr(md5(uniqid()),0,15);
-        $hashed=password_hash($password,PASSWORD_DEFAULT);
-        print($hashed);
-        setcookie('login', $login);
-        setcookie('password', $password);
-        try {
-          $stmt = $db->prepare("INSERT INTO form SET name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=?");
-          $stmt -> execute(array($name,$email,$year,$sex,$limb,$bio,$check));
-          $id=$db->lastInsertId();
-          $pwr=$db->prepare("INSERT INTO form1 SET power_id=?,person_id=?");
-          foreach($pwrs as $power){ 
-            $pwr->execute(array($power,$id));
-          }
-          $usr=$db->prepare("insert into users set id=?,login=?,password=?");
-          $usr->execute(array($id,$login,$hashed));
-        }
-        catch(PDOException $e){
-          print('Error : ' . $e->getMessage());
-          exit();
-        }
-      }
-    }
+  }
     if(!$errors){
       setcookie('save', '1');
     }
