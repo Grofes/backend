@@ -38,7 +38,7 @@ else {
       print('Зашло');
       $chk=$db1->prepare("select * from users where login=?");
       print('1');
-      $chk->bindParam(1,$login);
+      $chk->bindParam(1,$l);
       print('2');
       $chk->execute();
       print('3');
