@@ -54,8 +54,8 @@
                   <input type="submit" value=Edit>
                 </form>
               </td>
-            </tr>
-      <?php
+            </tr>';
+      
        }
       ?>
     </table>
