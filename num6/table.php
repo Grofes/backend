@@ -26,31 +26,31 @@
               <td><?= $user['limb']?></td>
               <td><?php 
                 $user_pwrs=array(
-                    "immortal"=>FALSE,
-                    "ghost"=>FALSE,
-                    "levitation"=>FALSE
+                    "1"=>FALSE,
+                    "2"=>FALSE,
+                    "3"=>FALSE
                 );
                 foreach($pwrs as $pwr){
                     if($pwr['id']==$user['id']){
-                        if($pwr['power']=='бессмертие'){
-                            $user_pwrs['immortal']=TRUE;
+                        if($pwr['form1']=='Бессмертие'){
+                            $user_pwrs['1']=TRUE;
                         }
-                        if($pwr['power']=='прохождение сквозь стены'){
-                            $user_pwrs['ghost']=TRUE;
+                        if($pwr['form1']=='Телепортация'){
+                            $user_pwrs['2']=TRUE;
                         }
-                        if($pwr['power']=='левитация'){
-                            $user_pwrs['levitation']=TRUE;
+                        if($pwr['form1']=='Телепатия'){
+                            $user_pwrs['3']=TRUE;
                         }
                     }
                 }
-                if($user_pwrs['immortal']){echo 'Бессмертие<br>';}
-                if($user_pwrs['ghost']){echo 'Прохождение сквозь стены<br>';}
-                if($user_pwrs['levitation']){echo 'Левитация<br>';}?>
+                if($user_pwrs['1']){echo 'Бессмертие<br>';}
+                if($user_pwrs['2']){echo 'Телепортация<br>';}
+                if($user_pwrs['3']){echo 'Телепатия<br>';}?>
               </td>
               <td><?= $user['bio']?></td>
               <td>
-                <form method="get" action="edit.php">
-                  <input name=edit_id value="<?= $user['id']?>" hidden>
+                <form method="get" action="index.php">
+                  <input name=index_id value="<?= $user['id']?>" hidden>
                   <input type="submit" value=Edit>
                 </form>
               </td>
@@ -60,9 +60,9 @@
       ?>
     </table>
     <?php
-    printf('Кол-во пользователей с сверхспособностью "Бессмертие": %d <br>',$powers_count[0]);
-    printf('Кол-во пользователей с сверхспособностью "Прохождение сквозь стены": %d <br>',$powers_count[1]);
-    printf('Кол-во пользователей с сверхспособностью "Левитация": %d <br>',$powers_count[2]);
+    printf('Кол-во пользователей с сверхспособностью "Бессмертие": %d <br>',$form1_count[0]);
+    printf('Кол-во пользователей с сверхспособностью "Телепортация": %d <br>',$form1_count[1]);
+    printf('Кол-во пользователей с сверхспособностью "Телепатия": %d <br>',$form1_count[2]);
     ?>
   </div>
 </body>
