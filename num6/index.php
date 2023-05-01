@@ -83,9 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : strip_tags($_COOKIE['bio_value']);
   $values['checked'] = empty($_COOKIE['checked_value']) ? FALSE : $_COOKIE['checked_value'];
   if (!$error and !empty($_COOKIE[session_name()]) and !empty($_SESSION['login'])) {
-    $user = 'art';
-    $pass = 'password';
-    $db = new PDO('mysql:host=localhost;dbname=my_db_artem', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+    $user = 'u52821';
+    $pass = '8567731';
+    $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
     try{
       $get=$db->prepare("select * from form where id=?");
       $get->bindParam(1,$_SESSION['uid']);
@@ -246,9 +246,9 @@ else {
       setcookie('checked_error', '', 100000);
     }
     
-    $user = 'art';
-    $pass = 'password';
-    $db = new PDO('mysql:host=localhost;dbname=my_db_artem', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+    $user = 'u52821';
+    $pass = '8567731';
+    $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
     if (!empty($_COOKIE[session_name()]) && !empty($_SESSION['login']) and !$errors) {
     $id=$_SESSION['uid'];
     $upd=$db->prepare("update form set name=?,email=?,year=?,sex=?,limb=?,bio=? where id=?");
