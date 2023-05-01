@@ -31,13 +31,13 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
   $power_array=array('Бессмертие','Телепортация','Телепатия');
   $powers_count=array();
   try{
-    $app=$db->prepare("select * from application");
+    $app=$db->prepare("select * from form");
     $app->execute();
     $users=$app->fetchALL();
-    $power=$db->prepare("select uid,p_name from supers");
+    $power=$db->prepare("select power_id,person_id from form1");
     $power->execute();
     $powers=$power->fetchALL();
-    $count=$db->prepare("select count(*) from supers where p_name=?");
+    $count=$db->prepare("select count(*) from form1 where person_id=?");
     foreach($power_array as $pwr){
       $count->execute(array($pwr));
       $powers_count[]=$count->fetchAll()[0][0];
