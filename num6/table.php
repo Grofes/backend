@@ -31,14 +31,14 @@
                     "3"=>FALSE
                 );
                 foreach($pwrs as $pwr){
-                    if($pwr['id']==$user['id']){
-                        if($pwr['form1']=='Бессмертие'){
+                    if($pwr['person_id']==$user['id']){
+                        if($pwr['power_id']=='Бессмертие'){
                             $user_pwrs['1']=TRUE;
                         }
-                        if($pwr['form1']=='Телепортация'){
+                        if($pwr['power_id']=='Телепортация'){
                             $user_pwrs['2']=TRUE;
                         }
-                        if($pwr['form1']=='Телепатия'){
+                        if($pwr['power_id']=='Телепатия'){
                             $user_pwrs['3']=TRUE;
                         }
                     }
@@ -50,7 +50,7 @@
               <td><?= $user['bio']?></td>
               <td>
                 <form method="get" action="index.php">
-                  <input name=index_id value="<?= $user['id']?>" hidden>
+                  <input name=edit_id value="<?= $user['id']?>" hidden>
                   <input type="submit" value=Edit>
                 </form>
               </td>
