@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
   print('Вы успешно авторизовались и видите защищенные паролем данные.');
   $users=array();
   $powers=array();
-  $form1_array=array('Бессмертие','Телепортация','Телепатия');
+  $form1_array=array('1','2','3');
   $powers_count=array();
   try{
     $app=$db->prepare("select * from form");
