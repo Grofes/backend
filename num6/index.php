@@ -293,24 +293,24 @@ else {
   }
   else { 
     if(!empty($_POST['del'])) {
-    $id=$_POST['id'];
-    include('connect.php');
-    try {
-      $del=$db->prepare("delete from form1 where person_id=?");
-      $del->execute(array($id));
-      $stmt = $db->prepare("delete from form where id=?");
-      $stmt -> execute(array($id));
+      $id=$_POST['id'];
+      include('connect.php');
+      try {
+        $del=$db->prepare("delete from form1 where person_id=?");
+        $del->execute(array($id));
+        $stmt = $db->prepare("delete from form where id=?");
+        $stmt -> execute(array($id));
+      }
+      catch(PDOException $e){
+        print('Error : ' . $e->getMessage());
+        exit();
+      }
+      setcookie('del','1');
+      setcookie('del_user',$id);
+      header('Location: admin.php');
     }
-    catch(PDOException $e){
-      print('Error : ' . $e->getMessage());
-    exit();
+    else{
+      header('Loction: admin.php');
     }
-    setcookie('del','1');
-    setcookie('del_user',$id);
-    header('Location: admin.php');
   }
-  else{
-    header('Loction: admin.php');
-  }
-}
 }
