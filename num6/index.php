@@ -100,7 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $values['checked']=$inf[0]['checked'];
 
       $get2=$db->prepare("select power_id from form1 where person_id=?");
-      $get2->bindParam(1,$_SESSION['uid']);
+      //$get2->bindParam(1,$_SESSION['uid']);
+      $get2->bindParam(1,$id);
       $get2->execute();
       $inf2=$get2->fetchALL();
       for($i=0;$i<count($inf2);$i++){
