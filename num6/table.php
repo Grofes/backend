@@ -32,20 +32,20 @@
                 );
                 foreach($pwrs as $pwr){
                     if($pwr['person_id']==$user['id']){
-                        if($pwr['power_id']=='Бессмертие'){
+                        if($pwr['power_id']=='1'){
                             $user_pwrs['1']=TRUE;
                         }
-                        if($pwr['power_id']=='Телепортация'){
+                        if($pwr['power_id']=='2'){
                             $user_pwrs['2']=TRUE;
                         }
-                        if($pwr['power_id']=='Телепатия'){
+                        if($pwr['power_id']=='3'){
                             $user_pwrs['3']=TRUE;
                         }
                     }
                 }
-                if($user_pwrs['1']){echo 'Бессмертие<br>';}
-                if($user_pwrs['2']){echo 'Телепортация<br>';}
-                if($user_pwrs['3']){echo 'Телепатия<br>';}?>
+                if($user_pwrs['1']){echo '1<br>';}
+                if($user_pwrs['2']){echo '2<br>';}
+                if($user_pwrs['3']){echo '3<br>';}?>
               </td>
               <td><?= $user['bio']?></td>
               <td>
