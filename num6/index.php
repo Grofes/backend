@@ -291,7 +291,7 @@ else {
     }
     header('Location: index.php?edit_id='.$id);
   }
-  elseif(!empty($_POST['del'])) {
+  else if(!empty($_POST['del'])) {
     $id=$_POST['id'];
     include('connect.php');
     try {
