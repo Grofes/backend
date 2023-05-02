@@ -2,14 +2,7 @@
 if($_SERVER['REQUEST_METHOD']=='GET'){
   require('connect.php');
   $pass_hash=array();
-  try{
-    $get=$db->prepare("select password from users where login=?");
-    $get->execute(array('admin'));
-    $pass_hash=$get->fetchAll()[0][0];
-  }
-  catch(PDOException $e){
-    print('Error: '.$e->getMessage());
-  }
+  
   //аутентификация
   if (empty($_SERVER['PHP_AUTH_USER']) ||
       empty($_SERVER['PHP_AUTH_PW']) ||
