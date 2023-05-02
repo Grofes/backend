@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     $form1=$db->prepare("select power_id,person_id from form1");
     $form1->execute();
     $powers=$form1->fetchALL();
-    $count=$db->prepare("select count(*) from form1 where person_id=?");
+    $count=$db->prepare("select count(*) from form1 where power_id=?");
     foreach($form1_array as $pwr){
       $count->execute(array($pwr));
       $powers_count[]=$count->fetchAll()[0][0];
