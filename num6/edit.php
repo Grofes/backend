@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     setcookie('sex_value', '', 100000);
     setcookie('limb_value', '', 100000);
     setcookie('bio_value', '', 100000);
-    setcookie('immortal_value', '', 100000);
-    setcookie('telepat_value', '', 100000);
-    setcookie('teleport_value', '', 100000);
-    setcookie('check_value', '', 100000);
+    setcookie('1_value', '', 100000);
+    setcookie('2_value', '', 100000);
+    setcookie('3_value', '', 100000);
+    setcookie('checked_value', '', 100000);
   }
   //Ошибки
   
@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $errors['year'] = !empty($_COOKIE['year_error']);
   $errors['sex'] = !empty($_COOKIE['sex_error']);
   $errors['limb'] = !empty($_COOKIE['limb_error']);
-  $errors['power'] = !empty($_COOKIE['power_error']);
-  $errors['check'] = !empty($_COOKIE['check_error']);
+  $errors['form1'] = !empty($_COOKIE['form1_error']);
+  $errors['checked'] = !empty($_COOKIE['checked_error']);
   if ($errors['name']) {
     setcookie('name_error', '', 100000);
     $messages[] = '<div class="error">Заполните имя.</div>';
@@ -52,24 +52,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $messages[] = '<div class="error">Выберите сколько у вас конечностей.</div>';
     $error=TRUE;
   }
-  if ($errors['power']) {
-    setcookie('power_error', '', 100000);
+  if ($errors['form1']) {
+    setcookie('form1_error', '', 100000);
     $messages[] = '<div class="error">Выберите хотя бы одну суперспособность.</div>';
     $error=TRUE;
   }
-  if ($errors['check']) {
-    setcookie('check_error', '', 100000);
+  if ($errors['checked']) {
+    setcookie('checked_error', '', 100000);
     $messages[] = '<div class="error">Необходимо согласиться с политикой конфиденциальности.</div>';
     $error=TRUE;
   }
   $values = array();
-  $values['immortal']=0;
-  $values['teleport']=0;
-  $values['telepat']=0;
+  $values['1']=0;
+  $values['2']=0;
+  $values['3']=0;
   include('connect.php');
   try{
       $id=$_GET['edit_id'];
-      $get=$db->prepare("select * from application where id=?");
+      $get=$db->prepare("select * from form where id=?");
       $get->execute(array($id));
       $user=$get->fetchALL();
       $values['name']=$user[0]['name'];
@@ -78,18 +78,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $values['sex']=$user[0]['sex'];
       $values['limb']=$user[0]['limb'];
       $values['bio']=$user[0]['bio'];
-      $get2=$db->prepare("select p_name from supers where uid=?");
+      $get2=$db->prepare("select person_id from form1 where power_id=?");
       $get2->execute(array($id));
       $powers=$get2->fetchALL();
       for($i=0;$i<count($powers);$i++){
-        if($powers[$i]['p_name']=='Бессмертие'){
-          $values['immortal']=1;
+        if($powers[$i]['person_id']=='1'){
+          $values['1']=1;
         }
-        if($powers[$i]['p_name']=='Телепортация'){
-          $values['teleport']=1;
+        if($powers[$i]['person_id']=='2'){
+          $values['2']=1;
         }
-        if($powers[$i]['p_name']=='Телепатия'){
-          $values['telepat']=1;
+        if($powers[$i]['person_id']=='3'){
+          $values['3']=1;
         }
       }
   }
@@ -109,10 +109,10 @@ else {
     $year=$_POST['year'];
     $sex=$_POST['sex'];
     $limb=$_POST['limb'];
-    $pwrs=$_POST['power'];
+    $pwrs=$_POST['form1'];
     $bio=$_POST['bio'];
     if(empty($_SESSION['login'])){
-      $check=$_POST['check'];
+      $check=$_POST['checked'];
     }
     $errors = FALSE;
     if (empty($name) or !preg_match($regex_name,$name)) {
@@ -145,7 +145,7 @@ else {
       setcookie('year_error','',100000);
     }
     //проверка пола
-    if (!isset($sex)  or ($sex!='M' and $sex!='W')) {
+    if (!isset($sex)  or ($sex!='1' and $sex!='2')) {
       setcookie('sex_error', '1', time() + 24 * 60 * 60);
       setcookie('sex_value', '', 100000);
       $errors = TRUE;
@@ -166,22 +166,22 @@ else {
     }
     //проверка суперспособностей
     if (!isset($pwrs)) {
-      setcookie('powers_error', '1', time() + 24 * 60 * 60);
-      setcookie('immortal_value', '', 100000);
-      setcookie('teleport_value', '', 100000);
-      setcookie('telepat_value', '', 100000);
+      setcookie('form1_error', '1', time() + 24 * 60 * 60);
+      setcookie('1_value', '', 100000);
+      setcookie('2_value', '', 100000);
+      setcookie('3_value', '', 100000);
       $errors = TRUE;
     }
     else {
       $a=array(
-        "immortal_value"=>0,
-        "teleport_value"=>0,
-        "telepat_value"=>0
+        "1_value"=>0,
+        "2_value"=>0,
+        "3_value"=>0
       );
       foreach($pwrs as $pwr){
-        if($pwr=='Бессмертие'){setcookie('immortal_value', 1, time() + 60 * 60); $a['immortal_value']=1;} 
-        if($pwr=='Телепортация'){setcookie('teleport_value', 1, time() + 60 * 60);$a['teleport_value']=1;} 
-        if($pwr=='Телепатия'){setcookie('telepat_value', 1, time() + 60 * 60);$a['telepat_value']=1;} 
+        if($pwr=='1'){setcookie('1_value', 1, time() + 60 * 60); $a['1_value']=1;} 
+        if($pwr=='2'){setcookie('2_value', 1, time() + 60 * 60);$a['2_value']=1;} 
+        if($pwr=='3'){setcookie('3_value', 1, time() + 60 * 60);$a['3_value']=1;} 
       }
       foreach($a as $c=>$val){
         if($val==0){
@@ -203,15 +203,15 @@ else {
       setcookie('year_error', '', 100000);
       setcookie('sex_error', '', 100000);
       setcookie('limb_error', '', 100000);
-      setcookie('power_error', '', 100000);
+      setcookie('form1_error', '', 100000);
     }
     include('connect.php');
     if(!$errors){
-        $upd=$db->prepare("update application set name=?,email=?,year=?,sex=?,limb=?,bio=? where id=?");
-        $upd->execute(array($name,$email,$year,$sex,$limb,$bio,$id));
-        $del=$db->prepare("delete from supers where uid=?");
+        $upd=$db->prepare("update form set name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=? where id=?");
+        $upd->execute(array($name,$email,$year,$sex,$limb,$bio,$id,$checked));
+        $del=$db->prepare("delete from form1 where power_id=?");
         $del->execute(array($id));
-        $upd=$db->prepare("insert into supers set p_name=?,uid=?");
+        $upd=$db->prepare("insert into form1 set power_id=?,person_id=?");
         foreach($pwrs as $pwr){
           $upd->execute(array($pwr,$id));
         }
@@ -226,9 +226,9 @@ else {
     $id=$_POST['id'];
     include('connect.php');
     try {
-      $del=$db->prepare("delete from supers where uid=?");
+      $del=$db->prepare("delete from form1 where power_id=?");
       $del->execute(array($id));
-      $stmt = $db->prepare("delete from application where id=?");
+      $stmt = $db->prepare("delete from form where id=?");
       $stmt -> execute(array($id));
     }
     catch(PDOException $e){
