@@ -47,9 +47,9 @@
                         }
                     }
                 }
-                if($user_pwrs['1']){echo 'Бессмертие<br>';}
-                if($user_pwrs['2']){echo 'Прохождение сквозь стены<br>';}
-                if($user_pwrs['3']){echo 'Левитация<br>';}?>
+                if($user_pwrs['1']){echo '1<br>';}
+                if($user_pwrs['2']){echo '2<br>';}
+                if($user_pwrs['3']){echo '3<br>';}?>
               </td>
               <td><?= $user['bio']?></td>
               <td>
