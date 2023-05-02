@@ -47,9 +47,9 @@
                         }
                     }
                 }
-                if($user_pwrs['1']){echo 'Levit<br>';}
-                if($user_pwrs['2']){echo 'Polit<br>';}
-                if($user_pwrs['3']){echo 'Gebit<br>';}?>
+                if($user_pwrs['1']){echo 'Бессмертие<br>';}
+                if($user_pwrs['2']){echo 'Телепортация<br>';}
+                if($user_pwrs['3']){echo 'Телепатия<br>';}?>
               </td>
               <td><?= $user['bio']?></td>
               <td>
@@ -65,8 +65,8 @@
     </table>
     <?php
     printf('Кол-во пользователей с сверхспособностью "Бессмертие": %d <br>',$pwrs_count[0]);
-    printf('Кол-во пользователей с сверхспособностью "Прохождение сквозь стены": %d <br>',$pwrs_count[1]);
-    printf('Кол-во пользователей с сверхспособностью "Левитация": %d <br>',$pwrs_count[2]);
+    printf('Кол-во пользователей с сверхспособностью "Телепортация": %d <br>',$pwrs_count[1]);
+    printf('Кол-во пользователей с сверхспособностью "Телепатия": %d <br>',$pwrs_count[2]);
     ?>
   </div>
 </body>
