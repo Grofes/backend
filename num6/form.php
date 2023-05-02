@@ -58,7 +58,10 @@ if (!empty($messages)) {
     <input type="submit" name='edit' value="Изменить"/>
     <input type="submit" name='del' value="Удалить"/>
   </div>
-  <form action="admin.php" method="POST">
-    <input type="submit" name="back" value="Назад">
-  </form>
+    <p>
+    <a href='admin.php' class="button">Назад</a>
+    </p>
+  //<form action="admin.php" method="POST">
+    //<input type="submit" name="back" value="Назад">
+  //</form>
 </body>
