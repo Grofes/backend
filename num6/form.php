@@ -59,7 +59,7 @@ if (!empty($messages)) {
     <input type="submit" name='del' value="Удалить"/>
   </form>
   </div>
-  <form>
+  <form action="admin.php" method="POST">
     <input type="submit" name="back" value="Назад">
   </form>
 </body>
