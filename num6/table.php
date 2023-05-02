@@ -7,12 +7,12 @@
   <div class="table">
     <table>
       <tr>
-        <th>Имя</th>
-        <th>Почта</th>
-        <th>Год</th>
-        <th>Пол</th>
-        <th>Кол-во конечностей</th>
-        <th>Сверхсилы</th>
+        <th>Имя</th><br><br>
+        <th>Почта</th><br><br>
+        <th>Год</th><br><br>
+        <th>Пол</th><br><br>
+        <th>Кол-во конечностей</th><br><br>
+        <th>Сверхсилы</th><br><br>
         <th>Био</th>
       </tr>
       <?php
