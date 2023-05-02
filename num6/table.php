@@ -3,7 +3,7 @@
     border: 2px solid red;
   }
   table {
-  text-align: centr;
+  text-align: center;
   border-spacing: 100px 0;
 }
 </style>
