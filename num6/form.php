@@ -36,8 +36,8 @@ if (!empty($messages)) {
     </select> <br>
     <label> Ваш пол </label> <br>
     <div <?php if ($errors['sex']) {print 'class="error"';} ?>>
-      <input name="sex" type="radio" value="M" <?php if($values['sex']=="M") {print 'checked';} ?>/> Мужчина
-      <input name="sex" type="radio" value="W" <?php if($values['sex']=="W") {print 'checked';} ?>/> Женщина
+      <input name="sex" type="radio" value="1" <?php if($values['sex']=="1") {print 'checked';} ?>/> Мужчина
+      <input name="sex" type="radio" value="2" <?php if($values['sex']=="2") {print 'checked';} ?>/> Женщина
     </div>
     <label> Сколько у вас конечностей </label> <br>
     <div <?php if ($errors['limb']) {print 'class="error"';} ?>>
@@ -47,10 +47,10 @@ if (!empty($messages)) {
       <input name="limb" type="radio" value="4" <?php if($values['limb']=="4") {print 'checked';} ?>/> 4 
     </div>
     <label> Выберите суперспособности </label> <br>
-    <select name="power[]" size="3" multiple <?php if ($errors['powers']) {print 'class="error"';} ?>>
-      <option value="Телепортация" <?php if($values['teleport']==1){print 'selected';} ?>>Телепортация</option>
-      <option value="Бессмертие" <?php if($values['immortal']==1){print 'selected';} ?>>Бессмертие</option>
-      <option value="Телепатия" <?php if($values['telepat']==1){print 'selected';} ?>>Телепатия</option>
+    <select name="form1[]" size="3" multiple <?php if ($errors['form1']) {print 'class="error"';} ?>>
+      <option value="1" <?php if($values['1']==1){print 'selected';} ?>>Бессмертие</option>
+      <option value="2" <?php if($values['2']==1){print 'selected';} ?>>Телепортация</option>
+      <option value="3" <?php if($values['3']==1){print 'selected';} ?>>Телепатия</option>
     </select> <br>
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
