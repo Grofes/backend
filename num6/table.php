@@ -2,6 +2,10 @@
   .error {
     border: 2px solid red;
   }
+  table {
+  text-align: centr;
+  border-spacing: 100px 0;
+}
 </style>
 <body>
   <div class="table">
@@ -26,26 +30,26 @@
               <td><?= $user['limb']?></td>
               <td><?php 
                 $user_pwrs=array(
-                    "immortal"=>FALSE,
-                    "ghost"=>FALSE,
-                    "levitation"=>FALSE
+                    "1"=>FALSE,
+                    "2"=>FALSE,
+                    "3"=>FALSE
                 );
                 foreach($pwrs as $pwr){
                     if($pwr['id']==$user['id']){
-                        if($pwr['power']=='бессмертие'){
-                            $user_pwrs['immortal']=TRUE;
+                        if($pwr['power']=='1'){
+                            $user_pwrs['1']=TRUE;
                         }
-                        if($pwr['power']=='прохождение сквозь стены'){
-                            $user_pwrs['ghost']=TRUE;
+                        if($pwr['power']=='2'){
+                            $user_pwrs['2']=TRUE;
                         }
-                        if($pwr['power']=='левитация'){
-                            $user_pwrs['levitation']=TRUE;
+                        if($pwr['power']=='3'){
+                            $user_pwrs['3']=TRUE;
                         }
                     }
                 }
-                if($user_pwrs['immortal']){echo 'Бессмертие<br>';}
-                if($user_pwrs['ghost']){echo 'Прохождение сквозь стены<br>';}
-                if($user_pwrs['levitation']){echo 'Левитация<br>';}?>
+                if($user_pwrs['1']){echo 'Бессмертие<br>';}
+                if($user_pwrs['2']){echo 'Прохождение сквозь стены<br>';}
+                if($user_pwrs['3']){echo 'Левитация<br>';}?>
               </td>
               <td><?= $user['bio']?></td>
               <td>
