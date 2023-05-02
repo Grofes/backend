@@ -59,6 +59,6 @@ if (!empty($messages)) {
     <input type="submit" name='del' value="Удалить"/>
   </div>
   <form>
-    <input href='admin.php' type="submit" name="back" value="Назад">
+    <input href="admin.php" type="submit" name="back" value="Назад">
   </form>
 </body>
