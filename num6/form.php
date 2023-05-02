@@ -55,7 +55,7 @@ if (!empty($messages)) {
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
     <input name='id' hidden value=<?php print($_GET['edit_id']);?>>
-    <input type="submit" name='edit' value="Изменить"/>
+    <input type="submit" name='save' value="Изменить"/>
     <input type="submit" name='del' value="Удалить"/>
   </div>
   <form>
