@@ -82,13 +82,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $get2->execute(array($id));
       $powers=$get2->fetchALL();
       for($i=0;$i<count($powers);$i++){
-        if($powers[$i]['person_id']=='1'){
+        if($powers[$i]['power_id']=='1'){
           $values['1']=1;
         }
-        if($powers[$i]['person_id']=='2'){
+        if($powers[$i]['power_id']=='2'){
           $values['2']=1;
         }
-        if($powers[$i]['person_id']=='3'){
+        if($powers[$i]['power_id']=='3'){
           $values['3']=1;
         }
       }
