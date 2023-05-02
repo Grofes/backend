@@ -290,6 +290,7 @@ else {
       setcookie('save', '1');
     }
     header('Location: index.php?edit_id='.$id);
+  }
   if(!empty($_POST['del'])) {
       $id=$_POST['id'];
       include('connect.php');
