@@ -27,20 +27,20 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
   }
   print('Вы успешно авторизовались и видите защищенные паролем данные.');
   $users=array();
-  $powers=array();
+  $pwrs=array();
   $form1_array=array('1','2','3');
-  $powers_count=array();
+  $pwrs_count=array();
   try{
     $app=$db->prepare("select * from form");
     $app->execute();
     $users=$app->fetchALL();
     $form1=$db->prepare("select power_id,person_id from form1");
     $form1->execute();
-    $powers=$form1->fetchALL();
+    $pwrs=$form1->fetchALL();
     $count=$db->prepare("select count(*) from form1 where power_id=?");
     foreach($form1_array as $pwr){
       $count->execute(array($pwr));
-      $powers_count[]=$count->fetchAll()[0][0];
+      $pwrs_count[]=$count->fetchAll()[0][0];
     }
   }
   catch(PDOException $e){
