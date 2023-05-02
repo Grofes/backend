@@ -15,7 +15,7 @@ if (!empty($messages)) {
 }
 ?>
   <div class="form1">
-  <form action="admin.php" method="POST">
+  <form action="edit.php" method="POST">
     <label> ФИО </label> <br>
     <input name="name" <?php if ($errors['name']) {print 'class="error"';} ?> value="<?php print $values['name']; ?>" /> <br>
     <label> Почта </label> <br>
@@ -55,10 +55,10 @@ if (!empty($messages)) {
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
     <input name='id' hidden value=<?php print($_GET['edit_id']);?>>
-    <input type="submit" name='save' value="Изменить"/>
+    <input type="submit" name='edit' value="Изменить"/>
     <input type="submit" name='del' value="Удалить"/>
   </div>
-  <form>
+  <form action="admin.php" method="POST">
     <input type="submit" name="back" value="Назад">
   </form>
 </body>
