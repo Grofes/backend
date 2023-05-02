@@ -80,15 +80,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $values['bio']=$user[0]['bio'];
       $get2=$db->prepare("select power_id from form1 where person_id=?");
       $get2->execute(array($id));
-      $powers=$get2->fetchALL();
-      for($i=0;$i<count($powers);$i++){
-        if($powers[$i]['power_id']=='1'){
+      $pwrs=$get2->fetchALL();
+      for($i=0;$i<count($pwrs);$i++){
+        if($pwrs[$i]['power_id']=='1'){
           $values['1']=1;
         }
-        if($powers[$i]['power_id']=='2'){
+        if($pwrs[$i]['power_id']=='2'){
           $values['2']=1;
         }
-        if($powers[$i]['power_id']=='3'){
+        if($pwrs[$i]['power_id']=='3'){
           $values['3']=1;
         }
       }
