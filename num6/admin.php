@@ -28,17 +28,17 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
   print('Вы успешно авторизовались и видите защищенные паролем данные.');
   $users=array();
   $powers=array();
-  $power_array=array('Бессмертие','Телепортация','Телепатия');
+  $form1_array=array('1','2','3');
   $powers_count=array();
   try{
-    $app=$db->prepare("select * from application");
+    $app=$db->prepare("select * from form");
     $app->execute();
     $users=$app->fetchALL();
-    $power=$db->prepare("select uid,p_name from supers");
-    $power->execute();
-    $powers=$power->fetchALL();
-    $count=$db->prepare("select count(*) from supers where p_name=?");
-    foreach($power_array as $pwr){
+    $form1=$db->prepare("select power_id,person_id from form1");
+    $form1->execute();
+    $powers=$form1->fetchALL();
+    $count=$db->prepare("select count(*) from form1 where person_id=?");
+    foreach($form1_array as $pwr){
       $count->execute(array($pwr));
       $powers_count[]=$count->fetchAll()[0][0];
     }
