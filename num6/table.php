@@ -3,7 +3,7 @@
     border: 2px solid red;
   }
   table {
-    border-spacing: 50px 0;
+    border-spacing: 100px 0;
   }
 </style>
 <body>
