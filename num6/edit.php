@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $values['sex']=$user[0]['sex'];
       $values['limb']=$user[0]['limb'];
       $values['bio']=$user[0]['bio'];
-      $get2=$db->prepare("select person_id from form1 where power_id=?");
+      $get2=$db->prepare("select power_id from form1 where person_id=?");
       $get2->execute(array($id));
       $powers=$get2->fetchALL();
       for($i=0;$i<count($powers);$i++){
@@ -207,9 +207,9 @@ else {
     }
     include('connect.php');
     if(!$errors){
-        $upd=$db->prepare("update form set name=?,email=?,year=?,sex=?,limb=?,bio=?,checked=? where id=?");
-        $upd->execute(array($name,$email,$year,$sex,$limb,$bio,$id,$checked));
-        $del=$db->prepare("delete from form1 where power_id=?");
+        $upd=$db->prepare("update form set name=?,email=?,year=?,sex=?,limb=?,bio=? where id=?");
+        $upd->execute(array($name,$email,$year,$sex,$limb,$bio,$id));
+        $del=$db->prepare("delete from form1 where person_id=?");
         $del->execute(array($id));
         $upd=$db->prepare("insert into form1 set power_id=?,person_id=?");
         foreach($pwrs as $pwr){
@@ -226,7 +226,7 @@ else {
     $id=$_POST['id'];
     include('connect.php');
     try {
-      $del=$db->prepare("delete from form1 where power_id=?");
+      $del=$db->prepare("delete from form1 where person_id=?");
       $del->execute(array($id));
       $stmt = $db->prepare("delete from form where id=?");
       $stmt -> execute(array($id));
