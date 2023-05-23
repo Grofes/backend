@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 else {
   $login=$_POST['login'];
   $password=$_POST['password'];
-  $uid=0;
+  $uid=1;
   $error=TRUE;
   $user = 'u52821';
   $pass = '8567731';
