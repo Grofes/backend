@@ -53,14 +53,14 @@ if (!empty($messages)) {
     </div>
     <label> Выберите суперспособности </label> <br>
     <select name="form1[]" size="3" multiple <?php if ($errors['form1']) {print 'class="error"';} ?>>
-      <option value="1" <?php if($values['1']==1){print 'selected';} ?>>Телепортация</option>
-      <option value="2" <?php if($values['2']==1){print 'selected';} ?>>Бессмертие</option>
-      <option value="3" <?php if($values['3']==1){print 'selected';} ?>>Телепатия</option>
+      <option value="1">Телепортация</option>
+      <option value="2">Бессмертие</option>
+      <option value="3">Телепатия</option>
     </select> <br>
     <label> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
     <div  <?php if ($errors['checked']) {print 'class="error"';} ?>>
-    <input name="checked" type="checkbox"<?php if($values['check']==TRUE){print 'checked';} ?>> Вы согласны с пользовательским соглашением <br>
+    <input name="checked" type="checkbox"<?php if($values['checked']==TRUE){print 'checked';} ?>> Вы согласны с пользовательским соглашением <br>
     </div>
     <input type="submit" value="Отправить"/>
   </form>
