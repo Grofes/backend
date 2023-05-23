@@ -33,6 +33,7 @@ else {
   $user = 'u52821';
   $pass = '8567731';
   $db1 = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+  print("privet");
   if(!empty($login) and !empty($password)){
     print("xyi");
     try{
