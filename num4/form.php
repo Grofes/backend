@@ -51,7 +51,7 @@ if (!empty($messages)) {
       <option value="2">Бессмертие</option>
       <option value="3">Телепатия</option>
     </select> <br>
-    <label bio_value="<?php print $values['bio']; ?>"> Краткая биография </label> <br>
+    <label <?php if ($errors['bio']) {print 'class="error"';} ?> bio_value="<?php print $values['bio']; ?>"> Краткая биография </label> <br>
     <textarea name="bio" rows="10" cols="15"></textarea> <br>
     <div  <?php if ($errors['checked']) {print 'class="error"';} ?> checked_value="<?php print $values['checked']; ?>">
     <input name="checked" type="checkbox"> Вы согласны с пользовательским соглашением <br>
