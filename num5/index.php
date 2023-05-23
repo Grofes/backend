@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         strip_tags($_COOKIE['password']));
     }
     setcookie('name_value', '', 100000);
-    setcookie('mail_value', '', 100000);
+    setcookie('email_value', '', 100000);
     setcookie('year_value', '', 100000);
     setcookie('sex_value', '', 100000);
     setcookie('limb_value', '', 100000);
