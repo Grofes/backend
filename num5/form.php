@@ -1,5 +1,10 @@
 <head>
   <link rel="stylesheet" href="style.css" type="text/css">
+  .error {
+      margin: 0 auto 2px auto;
+      width: 200px;
+      border: 2px solid red;
+  }
 </head>
 <body>
 <?php
