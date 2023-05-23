@@ -1,10 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
-print("nachalo123");
 session_start();
-print("nachalo");
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-  print("1 if");
   if (!empty($_SESSION['login'])) {
   header('Location: index.php');
   }else{
@@ -18,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 </style>
 <div class="form-sign-in">
 <form action="login.php" method="post">
-  print("pizda");
   <label> Логин <label> <br>
   <input name="login" /> <br> 
   <label> Пароль <label> <br>
@@ -37,9 +33,7 @@ else {
   $user = 'u52821';
   $pass = '8567731';
   $db1 = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-  print("privet");
   if(!empty($login) and !empty($password)){
-    print("xyi");
     try{
       $chk=$db1->prepare("select * from users where login=?");
       $chk->bindParam(1,$login);
@@ -66,5 +60,5 @@ else {
   // Записываем ID пользователя.
   $_SESSION['uid'] = $uid;
   // Делаем перенаправление.
-  //header('Location: index.php');
+  header('Location: index.php');
 }
