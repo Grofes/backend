@@ -153,13 +153,10 @@ else {
     }
     //проверка почты
     if (empty($email) or !preg_match($regex_email,$email)) {
-      setcookie('email_error', '1', time() + 24*60 * 60);
-      setcookie('email_value', '', 100000);
+      setcookie('email_error', '1', time() + 24 * 60 * 60);
       $errors = TRUE;
-    }
-    else {
-      setcookie('email_value', $email, time() + 60 * 60);
-      setcookie('email_error','',100000);
+    } else {
+      setcookie('email_value', $email, time() + 30 * 24 * 60 * 60 * 12);
     }
     //проверка года
     if ($year=='Выбрать' or ($year<1800 and $year>2023)) {
