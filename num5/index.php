@@ -286,6 +286,6 @@ else {
     if(!$errors){
       setcookie('save', '1');
     }
-    header('Location: ./');
+    //header('Location: ./');
   }
 }
