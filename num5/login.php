@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <div class="form-sign-in">
 <form action="login.php" method="post">
   print("pizda");
-  <label> Логин xyi <label> <br>
+  <label> Логинxyi <label> <br>
   <input name="login" /> <br> 
   <label> Пароль <label> <br>
   <input name="password" type="password"/> <br><br>
