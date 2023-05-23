@@ -22,9 +22,9 @@ if (!empty($messages)) {
   <div class="fr1">
   <form action="index.php" method="POST">
     <label> ФИО </label> <br>
-    <input name="name" <?php if ($errors['name']) {print 'class="error"';} ?> value="<?php print $values['name']; ?>" /> <br>
+    <input name="name" <?php if ($errors['name']) {print 'class="error"';} ?> /> <br>
     <label> Почта </label> <br>
-    <input name="email" type="email" <?php if ($errors['email']) {print 'class="error"';} ?> value="<?php print $values['email']; ?>"/> <br>
+    <input name="email" type="email" <?php if ($errors['email']) {print 'class="error"';} ?> /> <br>
     <label> Год рождения </label> <br>
     <select name="year" <?php if ($errors['year']) {print 'class="error"';} ?>>
       <option value="Выбрать">Выбрать</option>
@@ -41,15 +41,15 @@ if (!empty($messages)) {
     </select> <br>
     <label> Ваш пол </label> <br>
     <div <?php if ($errors['sex']) {print 'class="error"';} ?>>
-      <input name="sex" type="radio" value="1" <?php if($values['sex']=="1") {print 'checked';} ?>/> Мужчина
-      <input name="sex" type="radio" value="2" <?php if($values['sex']=="2") {print 'checked';} ?>/> Женщина
+      <input name="sex" type="radio" value="1" /> Мужчина
+      <input name="sex" type="radio" value="2" /> Женщина
     </div>
     <label> Сколько у вас конечностей </label> <br>
     <div <?php if ($errors['limb']) {print 'class="error"';} ?>>
-      <input name="limb" type="radio" value="1" <?php if($values['limb']=="1") {print 'checked';} ?>/> 1 
-      <input name="limb" type="radio" value="2" <?php if($values['limb']=="2") {print 'checked';} ?>/> 2 
-      <input name="limb" type="radio" value="3" <?php if($values['limb']=="3") {print 'checked';} ?>/> 3 
-      <input name="limb" type="radio" value="4" <?php if($values['limb']=="4") {print 'checked';} ?>/> 4 
+      <input name="limb" type="radio" value="1" /> 1 
+      <input name="limb" type="radio" value="2" /> 2 
+      <input name="limb" type="radio" value="3" /> 3 
+      <input name="limb" type="radio" value="4" /> 4 
     </div>
     <label> Выберите суперспособности </label> <br>
     <select name="form1[]" size="3" multiple <?php if ($errors['form1']) {print 'class="error"';} ?>>
@@ -58,9 +58,9 @@ if (!empty($messages)) {
       <option value="3">Телепатия</option>
     </select> <br>
     <label> Краткая биография </label> <br>
-    <textarea name="bio" rows="10" cols="15"><?php print $values['bio']; ?></textarea> <br>
+    <textarea name="bio" rows="10" cols="15"></textarea> <br>
     <div  <?php if ($errors['checked']) {print 'class="error"';} ?>>
-    <input name="checked" type="checkbox"<?php if($values['checked']==TRUE){print 'checked';} ?>> Вы согласны с пользовательским соглашением <br>
+    <input name="checked" type="checkbox"> Вы согласны с пользовательским соглашением <br>
     </div>
     <input type="submit" value="Отправить"/>
   </form>
