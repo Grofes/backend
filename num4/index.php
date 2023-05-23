@@ -106,7 +106,7 @@ else {
   setcookie('limb_error','',100000);
 }
 //проверка суперспособностей
-if (!isset($_POST['form1'])) {
+if (isset($_POST['form1'])) {
   setcookie('form1_error', '1', time() + 24 * 60 * 60);
   setcookie('1_value', '', 100000);
   setcookie('2_value', '', 100000);
