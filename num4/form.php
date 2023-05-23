@@ -34,7 +34,7 @@ if (!empty($messages)) {
       </label>
     </select> <br>
     <label> Ваш пол </label> <br>
-    <div <?php if ($errors['sex']) {print 'class="error"';} ?>sex_value="<?php print $value['sex']; ?>>
+    <div <?php if ($errors['sex']) {print 'class="error"';} ?>sex_value="<?php print $value['sex']; ?>">
       <input name="sex" type="radio" value="1" /> Мужчина
       <input name="sex" type="radio" value="2" /> Женщина
     </div>
