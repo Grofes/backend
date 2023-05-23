@@ -6,34 +6,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     setcookie('save', '', 100000);
     $messages[] = 'Спасибо, результаты сохранены.';
   }
-  $errors = array(
-    'name'=>!empty($_COOKIE['name_error']),
-    'email'=>!empty($_COOKIE['email_error']),
-    'year'=>!empty($_COOKIE['year_error']),
-    'sex'=>!empty($_COOKIE['sex_error']),
-    'limb'=>!empty($_COOKIE['limb_error']),
-    'form1'=>!empty($_COOKIE['form1_error']),
-    'check'=>!empty($_COOKIE['check_error']),
-  );
+  $errors = array();
+  $errors['name'] = !empty($_COOKIE['name_error']);
+  $errors['year'] = !empty($_COOKIE['year_error']);
+  $errors['email'] = !empty($_COOKIE['email_error']);
+  $errors['sex'] = !empty($_COOKIE['sex_error']);
+  $errors['limb'] = !empty($_COOKIE['limb_error']);
+  $errors['bio'] = !empty($_COOKIE['bio_error']);
+  $errors['check'] = !empty($_COOKIE['check_error']);
+  $errors['form1'] = !empty($_COOKIE['form1_error']);
   if ($errors['name']) {
+    setcookie('name_error', '', 100000);
     $messages[] = '<div class="error">Заполните или исправьте имя.</div>';
   }
   if ($errors['email']) {
+    setcookie('email_error', '', 100000);
     $messages[] = '<div class="error">Заполните или исправьте почту.</div>';
   }
   if ($errors['year']) {
+    setcookie('year_error', '', 100000);
     $messages[] = '<div class="error">Выберите год рождения.</div>';
   }
   if ($errors['sex']) {
+    setcookie('sex_error', '', 100000);
     $messages[] = '<div class="error">Выберите пол.</div>';
   }
   if ($errors['limb']) {
+    setcookie('limb_error', '', 100000);
     $messages[] = '<div class="error">Выберите сколько у вас конечностей.</div>';
   }
   if ($errors['form1']) {
+    setcookie('form1_error', '', 100000);
     $messages[] = '<div class="error">Выберите хотя бы одну суперспособность.</div>';
   }
   if ($errors['check']) {
+    setcookie('check_error', '', 100000);
     $messages[] = '<div class="error">Необходимо согласиться с политикой конфиденциальности.</div>';
   }
 
