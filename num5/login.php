@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
+print("nachalo123");
 session_start();
 print("nachalo");
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
