@@ -25,9 +25,6 @@ if (!empty($messages)) {
     <input name="name" <?php if ($errors['name']) {print 'class="error"';} ?> /> <br>
     <label> Почта </label> <br>
     <input name="email" type="email" <?php if ($errors['email']) {print 'class="error"';} ?> /> <br>
-    <label> Год рождения </label> <br>
-    <select name="year" <?php if ($errors['year']) {print 'class="error"';} ?>>
-      <option value="Выбрать">Выбрать</option>
     <label>
       <?php
         printf('Год рождения:');
