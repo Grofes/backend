@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 </style>
 <div class="form-sign-in">
 <form action="login.php" method="post">
+  print("pizda");
   <label> Логин <label> <br>
   <input name="login" /> <br> 
   <label> Пароль <label> <br>
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 else {
   $login=$_POST['login'];
   $password=$_POST['password'];
-  $uid=1;
+  $uid=0;
   $error=TRUE;
   $user = 'u52821';
   $pass = '8567731';
