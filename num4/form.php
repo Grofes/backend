@@ -28,16 +28,13 @@ if (!empty($messages)) {
     <label> Год рождения </label> <br>
     <select name="year" <?php if ($errors['year']) {print 'class="error"';} ?>>
       <option value="Выбрать">Выбрать</option>
-    <?php
-        for($i=1800;$i<=2023;$i++){
-          if($values['year']==$i){
-            printf("<option value=%d selected>%d год</option>",$i,$i);
-          }
-          else{
-            printf("<option value=%d>%d год</option>",$i,$i);
-          }
-        }
-    ?>
+    <label>
+      <?php
+        printf('Год рождения:');
+      ?>
+      <br>
+      <input name="year" placeholder="year" <?php if ($errors['year']) {print 'class="error"';} ?> year_value="<?php print $values['year']; ?>">
+      </label>
     </select> <br>
     <label> Ваш пол </label> <br>
     <div <?php if ($errors['sex']) {print 'class="error"';} ?>>
