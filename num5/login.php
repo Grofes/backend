@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 session_start();
+print("nachalo");
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   print("1 if");
   if (!empty($_SESSION['login'])) {
