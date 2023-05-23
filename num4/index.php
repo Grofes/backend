@@ -135,7 +135,7 @@ else {
   $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass,
   [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
   try {
-	  $stmt = $db->prepare("INSERT INTO person SET name = ?,email= ?, year= ?, sex= ?, limb= ?, bio= ?,checked= ?");
+	  $stmt = $db->prepare("INSERT INTO form SET name = ?,email= ?, year= ?, sex= ?, limb= ?, bio= ?,checked= ?");
 	  $stmt->execute([$_POST['name'],$_POST['email'],$_POST['year'],$_POST['sex'],$_POST['limb'],$_POST['bio'],$_POST['checked']]);
 
 	  $id = $db->lastInsertId();
