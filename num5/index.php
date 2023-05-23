@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['3'] = empty($_COOKIE['3_value']) ? 0 : $_COOKIE['3_value'];
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : strip_tags($_COOKIE['bio_value']);
   $values['checked'] = empty($_COOKIE['checked_value']) ? FALSE : $_COOKIE['checked_value'];
-  if (!$error and !empty($_COOKIE[session_name()]) and !empty($_SESSION['login'])) {
+  if (!empty($_COOKIE[session_name()]) and !empty($_SESSION['login'])) {
     $user = 'u52821';
     $pass = '8567731';
     $db = new PDO('mysql:host=localhost;dbname=u52821', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
