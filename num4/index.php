@@ -5,16 +5,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (!empty($_COOKIE['save'])) {
     setcookie('save', '', 100000);
     $messages[] = 'Спасибо, результаты сохранены.';
-    setcookie('name_value', '', 100000);
-    setcookie('email_value', '', 100000);
-    setcookie('year_value', '', 100000);
-    setcookie('sex_value', '', 100000);
-    setcookie('limb_value', '', 100000);
-    setcookie('bio_value', '', 100000);
-    setcookie('1_value', '', 100000);
-    setcookie('2_value', '', 100000);
-    setcookie('3_value', '', 100000);
-    setcookie('checked_value', '', 100000);
   }
   $errors = array(
     'name'=>!empty($_COOKIE['name_error']),
